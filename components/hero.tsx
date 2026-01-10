@@ -99,7 +99,7 @@ export default function Hero() {
           {/* Text Content */}
           <div className="flex-1 text-center md:text-left">
             <div className="mb-6 overflow-hidden">
-              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent transition-all duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
+              <h1 className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold duration-700 delay-150 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}>
                 Rosdeb Koch
               </h1>
             </div>
