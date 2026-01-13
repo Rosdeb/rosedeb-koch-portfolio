@@ -25,7 +25,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
       }`}
     >
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="#" className="text-2xl font-bold text-accent">
+        <Link href="#" className="text-2xl font-bold text-white">
           RK
         </Link>
 
