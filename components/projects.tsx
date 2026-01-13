@@ -12,7 +12,7 @@ export default function CircularPortfolio() {
       icon: "/photo_6217528970366880544_x.jpg",
       gradient: "from-red-500 to-orange-500",
       bgGradient: "from-red-500/10 via-orange-500/10 to-rose-500/10",
-      tech: ["React Native", "Firebase", "News API"],
+      tech: ["Flutter", "Firebase", "News API"],
       description: "Digital newspaper with real-time updates",
       appLink: "https://play.google.com/store/apps/details?id=com.pagedrop.lagier",
       websiteLink: "https://legiergroup.com/en/",

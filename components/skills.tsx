@@ -2,11 +2,11 @@ export default function Skills() {
   const skillCategories = [
     {
       category: "Cross-Platform",
-      skills: ["Flutter", "React Native"],
+      skills: ["Flutter", "Dart" ],
     },
     {
       category: "Android",
-      skills: ["Kotlin", "Java", "Android Studio"],
+      skills: ["Kotlin", "Java", "Android Studio", "XML"],
     },
     {
       category: "iOS",
@@ -14,7 +14,7 @@ export default function Skills() {
     },
     {
       category: "Tools & Platforms",
-      skills: ["Git", "Firebase", "REST APIs", "CI/CD"],
+      skills: ["Git","Agora","Google Maps","Socket io","Iot Project","", "Firebase", "REST APIs", "CI/CD"],
     },
   ]
 
