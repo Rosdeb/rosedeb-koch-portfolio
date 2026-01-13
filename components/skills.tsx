@@ -14,7 +14,7 @@ export default function Skills() {
     },
     {
       category: "Tools & Platforms",
-      skills: ["Git","Agora","Google Maps","Socket io","Iot Project","", "Firebase", "REST APIs", "CI/CD"],
+      skills: ["Git","Agora","Google Maps","Socket io","Iot Project", "Firebase", "REST APIs", "CI/CD"],
     },
   ]
 
