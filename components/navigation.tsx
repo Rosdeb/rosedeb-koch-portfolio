@@ -2,12 +2,14 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
+import RKLogo from "@/components/rk-logo"
 
 interface NavigationProps {
   scrolled: boolean
+  scrollingUp: boolean
 }
 
-export default function Navigation({ scrolled }: NavigationProps) {
+export default function Navigation({ scrolled, scrollingUp }: NavigationProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   const navItems = [
@@ -33,8 +35,9 @@ export default function Navigation({ scrolled }: NavigationProps) {
         width: "100%",
         zIndex: 50,
         transition: "background-color 0.3s ease, border-color 0.3s ease",
-        backgroundColor: scrolled ? "#0a0a0a" : "transparent",
-        borderBottom: scrolled ? "1px solid #222222" : "1px solid transparent",
+        backgroundColor: scrolled && !scrollingUp ? "rgba(30, 42, 49, 0.9)" : "transparent",
+        borderBottom: scrolled && !scrollingUp ? "1px solid var(--border)" : "1px solid transparent",
+        backdropFilter: scrolled && !scrollingUp ? "blur(14px)" : "none",
       }}
     >
       <div
@@ -52,15 +55,12 @@ export default function Navigation({ scrolled }: NavigationProps) {
         <Link
           href="#"
           style={{
-            fontFamily: "var(--font-syne, Syne, sans-serif)",
-            fontSize: "20px",
-            fontWeight: 700,
-            letterSpacing: "-0.02em",
-            color: "#f5f5f5",
             textDecoration: "none",
+            display: "inline-flex",
+            alignItems: "center",
           }}
         >
-          RK
+          <RKLogo />
         </Link>
 
         {/* Desktop Nav */}
@@ -80,12 +80,12 @@ export default function Navigation({ scrolled }: NavigationProps) {
                 fontSize: "13px",
                 fontWeight: 400,
                 letterSpacing: "0.02em",
-                color: "#888888",
+                color: "var(--muted)",
                 textDecoration: "none",
                 transition: "color 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#f5f5f5")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
             >
               {item.name}
             </a>
@@ -105,7 +105,7 @@ export default function Navigation({ scrolled }: NavigationProps) {
             border: "none",
             cursor: "pointer",
             padding: "8px",
-            color: "#f5f5f5",
+            color: "var(--foreground)",
           }}
           className="show-mobile"
         >
@@ -130,8 +130,8 @@ export default function Navigation({ scrolled }: NavigationProps) {
       {mobileMenuOpen && (
         <div
           style={{
-            backgroundColor: "#0a0a0a",
-            borderBottom: "1px solid #222222",
+            backgroundColor: "var(--surface)",
+            borderBottom: "1px solid var(--border)",
             animation: "fadeIn 0.2s ease",
           }}
           onClick={(e) => e.stopPropagation()}
@@ -145,13 +145,13 @@ export default function Navigation({ scrolled }: NavigationProps) {
                 display: "block",
                 padding: "14px 32px",
                 fontSize: "13px",
-                color: "#888888",
+                color: "var(--muted)",
                 textDecoration: "none",
-                borderBottom: "1px solid #1a1a1a",
+                borderBottom: "1px solid var(--border-muted)",
                 transition: "color 0.2s ease",
               }}
-              onMouseEnter={(e) => (e.currentTarget.style.color = "#f5f5f5")}
-              onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "var(--foreground)")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
             >
               {item.name}
             </a>

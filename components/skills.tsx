@@ -23,8 +23,8 @@ export default function Skills() {
       id="skills"
       style={{
         padding: "120px 32px",
-        borderTop: "1px solid #222222",
-        backgroundColor: "#111111",
+        borderTop: "1px solid var(--border)",
+        backgroundColor: "var(--surface-elevated)",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -35,7 +35,7 @@ export default function Skills() {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "#555555",
+            color: "var(--muted)",
             marginBottom: "24px",
             fontFamily: "var(--font-inter, Inter, sans-serif)",
           }}
@@ -49,7 +49,7 @@ export default function Skills() {
             fontSize: "clamp(28px, 4vw, 44px)",
             fontWeight: 700,
             letterSpacing: "-0.025em",
-            color: "#f5f5f5",
+            color: "var(--foreground)",
             marginBottom: "64px",
           }}
         >
@@ -67,10 +67,10 @@ export default function Skills() {
                 gap: "32px",
                 alignItems: "start",
                 padding: "28px 0",
-                borderTop: "1px solid #1a1a1a",
+                borderTop: "1px solid var(--border-muted)",
                 borderBottom:
                   idx === skillCategories.length - 1
-                    ? "1px solid #1a1a1a"
+                    ? "1px solid var(--border-muted)"
                     : "none",
               }}
               className="skills-row"
@@ -81,7 +81,7 @@ export default function Skills() {
                   fontSize: "12px",
                   fontWeight: 500,
                   letterSpacing: "0.04em",
-                  color: "#555555",
+                  color: "var(--muted)",
                   textTransform: "uppercase",
                   fontFamily: "var(--font-inter, Inter, sans-serif)",
                   paddingTop: "4px",
@@ -128,22 +128,23 @@ function SkillTag({ skill }: { skill: string }) {
         padding: "5px 12px",
         fontSize: "12px",
         fontWeight: 400,
-        color: "#aaaaaa",
-        border: "1px solid #222222",
+        color: "var(--muted-light)",
+        border: "1px solid var(--border)",
         borderRadius: "4px",
         cursor: "default",
         transition: "border-color 0.2s ease, color 0.2s ease",
+        backgroundColor: "rgba(36, 52, 61, 0.72)",
         fontFamily: "var(--font-inter, Inter, sans-serif)",
       }}
       onMouseEnter={(e) => {
         const el = e.currentTarget as HTMLElement
-        el.style.borderColor = "#5B9BD5"
-        el.style.color = "#5B9BD5"
+        el.style.borderColor = "var(--accent)"
+        el.style.color = "var(--accent)"
       }}
       onMouseLeave={(e) => {
         const el = e.currentTarget as HTMLElement
-        el.style.borderColor = "#222222"
-        el.style.color = "#aaaaaa"
+        el.style.borderColor = "var(--border)"
+        el.style.color = "var(--muted-light)"
       }}
     >
       {skill}

@@ -28,8 +28,8 @@ export default function Experience() {
       id="experience"
       style={{
         padding: "120px 32px",
-        borderTop: "1px solid #222222",
-        backgroundColor: "#111111",
+        borderTop: "1px solid var(--border)",
+        backgroundColor: "var(--surface)",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -40,7 +40,7 @@ export default function Experience() {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "#555555",
+            color: "var(--muted)",
             marginBottom: "24px",
             fontFamily: "var(--font-inter, Inter, sans-serif)",
           }}
@@ -54,7 +54,7 @@ export default function Experience() {
             fontSize: "clamp(28px, 4vw, 44px)",
             fontWeight: 700,
             letterSpacing: "-0.025em",
-            color: "#f5f5f5",
+            color: "var(--foreground)",
             marginBottom: "64px",
           }}
         >
@@ -79,7 +79,7 @@ export default function Experience() {
                 <span
                   style={{
                     fontSize: "12px",
-                    color: idx === 0 ? "#5B9BD5" : "#555555",
+                    color: idx === 0 ? "var(--accent)" : "var(--muted)",
                     fontFamily: "var(--font-inter, Inter, sans-serif)",
                     letterSpacing: "0.02em",
                     fontWeight: idx === 0 ? 500 : 400,
@@ -93,7 +93,7 @@ export default function Experience() {
               <div
                 style={{
                   paddingLeft: "24px",
-                  borderLeft: `1px solid ${idx === 0 ? "#5B9BD5" : "#1e1e1e"}`,
+                  borderLeft: `1px solid ${idx === 0 ? "var(--accent)" : "var(--border-muted)"}`,
                   transition: "border-color 0.2s ease",
                 }}
               >
@@ -103,7 +103,7 @@ export default function Experience() {
                     fontSize: "18px",
                     fontWeight: 700,
                     letterSpacing: "-0.02em",
-                    color: "#f5f5f5",
+                    color: "var(--foreground)",
                     marginBottom: "4px",
                   }}
                 >
@@ -112,7 +112,7 @@ export default function Experience() {
                 <p
                   style={{
                     fontSize: "12px",
-                    color: "#555555",
+                    color: "var(--muted)",
                     marginBottom: "12px",
                     letterSpacing: "0.02em",
                     textTransform: "uppercase",
@@ -125,7 +125,7 @@ export default function Experience() {
                   style={{
                     fontSize: "14px",
                     lineHeight: "1.65",
-                    color: "#888888",
+                    color: "var(--muted-light)",
                     maxWidth: "560px",
                     fontWeight: 300,
                     fontFamily: "var(--font-inter, Inter, sans-serif)",

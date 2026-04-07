@@ -12,10 +12,17 @@ import Footer from "@/components/footer"
 
 export default function Home() {
   const [scrolled, setScrolled] = useState(false)
+  const [scrollingUp, setScrollingUp] = useState(true)
 
   useEffect(() => {
+    let lastScrollY = window.scrollY
+
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
+      const currentScrollY = window.scrollY
+
+      setScrolled(currentScrollY > 50)
+      setScrollingUp(currentScrollY <= lastScrollY || currentScrollY < 16)
+      lastScrollY = currentScrollY
     }
 
     window.addEventListener("scroll", handleScroll)
@@ -24,7 +31,7 @@ export default function Home() {
 
   return (
     <main className="bg-background text-foreground">
-      <Navigation scrolled={scrolled} />
+      <Navigation scrolled={scrolled} scrollingUp={scrollingUp} />
       <Hero />
       <About />
       <Skills />

@@ -4,8 +4,8 @@ export default function About() {
       id="about"
       style={{
         padding: "120px 32px",
-        borderTop: "1px solid #222222",
-        backgroundColor: "#0a0a0a",
+        borderTop: "1px solid var(--border)",
+        backgroundColor: "var(--background)",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -16,7 +16,7 @@ export default function About() {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "#555555",
+            color: "var(--muted)",
             marginBottom: "64px",
             fontFamily: "var(--font-inter, Inter, sans-serif)",
           }}
@@ -42,7 +42,7 @@ export default function About() {
                 fontWeight: 700,
                 letterSpacing: "-0.04em",
                 lineHeight: "1",
-                color: "#f5f5f5",
+                color: "var(--foreground)",
                 marginBottom: "8px",
               }}
             >
@@ -53,7 +53,7 @@ export default function About() {
                 fontFamily: "var(--font-syne, Syne, sans-serif)",
                 fontSize: "clamp(14px, 2vw, 18px)",
                 fontWeight: 400,
-                color: "#888888",
+                color: "var(--muted)",
                 letterSpacing: "-0.01em",
                 marginBottom: "40px",
               }}
@@ -80,7 +80,7 @@ export default function About() {
                       fontSize: "32px",
                       fontWeight: 700,
                       letterSpacing: "-0.02em",
-                      color: "#f5f5f5",
+                      color: "var(--foreground)",
                     }}
                   >
                     {s.value}
@@ -88,7 +88,7 @@ export default function About() {
                   <div
                     style={{
                       fontSize: "12px",
-                      color: "#555555",
+                      color: "var(--muted)",
                       marginTop: "4px",
                     }}
                   >
@@ -105,7 +105,7 @@ export default function About() {
               style={{
                 fontSize: "16px",
                 lineHeight: "1.75",
-                color: "#aaaaaa",
+                color: "var(--muted-light)",
                 marginBottom: "20px",
                 fontWeight: 300,
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
@@ -120,7 +120,7 @@ export default function About() {
               style={{
                 fontSize: "16px",
                 lineHeight: "1.75",
-                color: "#aaaaaa",
+                color: "var(--muted-light)",
                 marginBottom: "40px",
                 fontWeight: 300,
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
@@ -136,7 +136,7 @@ export default function About() {
               style={{
                 width: "40px",
                 height: "1px",
-                backgroundColor: "#333333",
+                backgroundColor: "var(--border)",
                 marginBottom: "32px",
               }}
             />
@@ -156,7 +156,7 @@ export default function About() {
                   href={link.href}
                   style={{
                     fontSize: "13px",
-                    color: "#888888",
+                    color: "var(--muted)",
                     textDecoration: "none",
                     fontFamily: "var(--font-inter, Inter, sans-serif)",
                     letterSpacing: "0.01em",
@@ -165,10 +165,10 @@ export default function About() {
                   }}
                   className="hover-underline"
                   onMouseEnter={(e) =>
-                    (e.currentTarget.style.color = "#5B9BD5")
+                    (e.currentTarget.style.color = "var(--accent)")
                   }
                   onMouseLeave={(e) =>
-                    (e.currentTarget.style.color = "#888888")
+                    (e.currentTarget.style.color = "var(--muted)")
                   }
                 >
                   {link.label} ↗

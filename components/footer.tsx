@@ -4,20 +4,9 @@ export default function Footer() {
   return (
     <footer className="bg-card/50 border-t border-border py-12 px-6">
       <div className="max-w-6xl mx-auto">
-        <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-          <div>
+        <div className="flex justify-center items-center text-center">
+          <div className="w-full">
             <p className="text-sm text-muted-foreground">© {currentYear} Rosdeb Koch. All rights reserved.</p>
-          </div>
-          <div className="flex gap-6">
-            <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Privacy
-            </a>
-            <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Terms
-            </a>
-            <a href="#about" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-              Sitemap
-            </a>
           </div>
         </div>
 

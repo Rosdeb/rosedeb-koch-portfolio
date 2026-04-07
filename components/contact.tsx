@@ -42,10 +42,10 @@ export default function Contact() {
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "12px 16px",
-    backgroundColor: "transparent",
-    border: "1px solid #222222",
+    backgroundColor: "rgba(36, 52, 61, 0.76)",
+    border: "1px solid var(--border)",
     borderRadius: "4px",
-    color: "#f5f5f5",
+    color: "var(--foreground)",
     fontSize: "14px",
     fontFamily: "var(--font-inter, Inter, sans-serif)",
     fontWeight: 300,
@@ -58,8 +58,8 @@ export default function Contact() {
       id="contact"
       style={{
         padding: "120px 32px",
-        borderTop: "1px solid #222222",
-        backgroundColor: "#0a0a0a",
+        borderTop: "1px solid var(--border)",
+        backgroundColor: "var(--background)",
       }}
     >
       <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
@@ -70,7 +70,7 @@ export default function Contact() {
             fontWeight: 500,
             letterSpacing: "0.12em",
             textTransform: "uppercase",
-            color: "#555555",
+            color: "var(--muted)",
             marginBottom: "24px",
             fontFamily: "var(--font-inter, Inter, sans-serif)",
           }}
@@ -84,7 +84,7 @@ export default function Contact() {
             fontSize: "clamp(28px, 4vw, 44px)",
             fontWeight: 700,
             letterSpacing: "-0.025em",
-            color: "#f5f5f5",
+            color: "var(--foreground)",
             marginBottom: "64px",
           }}
         >
@@ -96,7 +96,7 @@ export default function Contact() {
           <p
             style={{
               fontSize: "12px",
-              color: "#555555",
+              color: "var(--muted)",
               letterSpacing: "0.06em",
               textTransform: "uppercase",
               marginBottom: "12px",
@@ -112,13 +112,13 @@ export default function Contact() {
               fontSize: "clamp(22px, 4vw, 40px)",
               fontWeight: 700,
               letterSpacing: "-0.025em",
-              color: "#f5f5f5",
+              color: "var(--foreground)",
               textDecoration: "none",
               transition: "color 0.2s ease",
               display: "inline-block",
             }}
-            onMouseEnter={(e) => (e.currentTarget.style.color = "#5B9BD5")}
-            onMouseLeave={(e) => (e.currentTarget.style.color = "#f5f5f5")}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "var(--foreground)")}
           >
             rosdebkoch@gmail.com
           </a>
@@ -147,14 +147,14 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 style={{
                   fontSize: "13px",
-                  color: "#555555",
+                  color: "var(--muted)",
                   textDecoration: "none",
                   fontFamily: "var(--font-inter, Inter, sans-serif)",
                   letterSpacing: "0.02em",
                   transition: "color 0.2s ease",
                 }}
-                onMouseEnter={(e) => (e.currentTarget.style.color = "#5B9BD5")}
-                onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "var(--muted)")}
               >
                 {link.label} ↗
               </a>
@@ -163,14 +163,14 @@ export default function Contact() {
         </div>
 
         {/* Divider */}
-        <div style={{ height: "1px", backgroundColor: "#1a1a1a", marginBottom: "64px" }} />
+        <div style={{ height: "1px", backgroundColor: "var(--border-muted)", marginBottom: "64px" }} />
 
         {/* Contact form */}
         <div style={{ maxWidth: "560px" }}>
           <p
             style={{
               fontSize: "13px",
-              color: "#555555",
+              color: "var(--muted)",
               marginBottom: "32px",
               fontFamily: "var(--font-inter, Inter, sans-serif)",
               lineHeight: "1.6",
@@ -183,15 +183,16 @@ export default function Contact() {
             <div
               style={{
                 padding: "20px 24px",
-                border: "1px solid #5B9BD5",
+                border: "1px solid var(--accent)",
                 borderRadius: "4px",
+                backgroundColor: "rgba(145, 196, 195, 0.08)",
                 animation: "fadeIn 0.3s ease",
               }}
             >
               <p
                 style={{
                   fontSize: "14px",
-                  color: "#5B9BD5",
+                  color: "var(--accent)",
                   fontFamily: "var(--font-inter, Inter, sans-serif)",
                 }}
               >
@@ -208,8 +209,8 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 style={inputStyle}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "#5B9BD5")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "#222222")}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               />
               <input
                 type="email"
@@ -219,8 +220,8 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 style={inputStyle}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "#5B9BD5")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "#222222")}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               />
               <textarea
                 name="message"
@@ -230,8 +231,8 @@ export default function Contact() {
                 onChange={handleChange}
                 required
                 style={{ ...inputStyle, resize: "none" }}
-                onFocus={(e) => (e.currentTarget.style.borderColor = "#5B9BD5")}
-                onBlur={(e) => (e.currentTarget.style.borderColor = "#222222")}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "var(--accent)")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "var(--border)")}
               />
               <button
                 type="submit"

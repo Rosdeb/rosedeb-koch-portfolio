@@ -1,19 +1,19 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Syne, Inter } from "next/font/google"
+import { Space_Grotesk, Manrope } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import "./globals.css"
 
-const syne = Syne({
+const headingFont = Space_Grotesk({
   subsets: ["latin"],
-  weight: ["400", "500", "600", "700", "800"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-syne",
   display: "swap",
 })
 
-const inter = Inter({
+const bodyFont = Manrope({
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   variable: "--font-inter",
   display: "swap",
 })
@@ -47,8 +47,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" className={`${syne.variable} ${inter.variable}`}>
-      <body className="antialiased" style={{ fontFamily: "var(--font-inter, Inter, system-ui, sans-serif)" }}>
+    <html lang="en" className={`${headingFont.variable} ${bodyFont.variable}`}>
+      <body className="antialiased" style={{ fontFamily: "var(--font-inter, Manrope, system-ui, sans-serif)" }}>
         {children}
         <Analytics />
       </body>
