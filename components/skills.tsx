@@ -2,7 +2,7 @@ export default function Skills() {
   const skillCategories = [
     {
       category: "Cross-Platform",
-      skills: ["Flutter", "Dart" ],
+      skills: ["Flutter", "Dart"],
     },
     {
       category: "Android",
@@ -14,34 +14,139 @@ export default function Skills() {
     },
     {
       category: "Tools & Platforms",
-      skills: ["Git","Agora","Google Maps","Socket io","Iot Project", "Firebase", "REST APIs", "CI/CD"],
+      skills: ["Git", "Agora", "Google Maps", "Socket.io", "IoT", "Firebase", "REST APIs", "CI/CD"],
     },
   ]
 
   return (
-    <section id="skills" className="py-20 px-6 bg-card/50">
-      <div className="max-w-6xl mx-auto">
-        <h2 className="text-4xl font-bold mb-6">Technical Skills</h2>
-        <div className="w-12 h-1 bg-primary mb-12" />
+    <section
+      id="skills"
+      style={{
+        padding: "120px 32px",
+        borderTop: "1px solid #222222",
+        backgroundColor: "#111111",
+      }}
+    >
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        {/* Section label */}
+        <p
+          style={{
+            fontSize: "11px",
+            fontWeight: 500,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "#555555",
+            marginBottom: "24px",
+            fontFamily: "var(--font-inter, Inter, sans-serif)",
+          }}
+        >
+          03 — Skills
+        </p>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {skillCategories.map((category) => (
+        <h2
+          style={{
+            fontFamily: "var(--font-syne, Syne, sans-serif)",
+            fontSize: "clamp(28px, 4vw, 44px)",
+            fontWeight: 700,
+            letterSpacing: "-0.025em",
+            color: "#f5f5f5",
+            marginBottom: "64px",
+          }}
+        >
+          Technical Expertise
+        </h2>
+
+        {/* Definition list rows */}
+        <div>
+          {skillCategories.map((cat, idx) => (
             <div
-              key={category.category}
-              className="bg-card p-6 rounded-lg border border-border hover:border-primary transition-colors duration-300"
+              key={cat.category}
+              style={{
+                display: "grid",
+                gridTemplateColumns: "200px 1fr",
+                gap: "32px",
+                alignItems: "start",
+                padding: "28px 0",
+                borderTop: "1px solid #1a1a1a",
+                borderBottom:
+                  idx === skillCategories.length - 1
+                    ? "1px solid #1a1a1a"
+                    : "none",
+              }}
+              className="skills-row"
             >
-              <h3 className="text-lg font-semibold mb-4 text-primary">{category.category}</h3>
-              <ul className="space-y-2">
-                {category.skills.map((skill) => (
-                  <li key={skill} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
-                    • {skill}
-                  </li>
+              {/* Category label */}
+              <span
+                style={{
+                  fontSize: "12px",
+                  fontWeight: 500,
+                  letterSpacing: "0.04em",
+                  color: "#555555",
+                  textTransform: "uppercase",
+                  fontFamily: "var(--font-inter, Inter, sans-serif)",
+                  paddingTop: "4px",
+                }}
+              >
+                {cat.category}
+              </span>
+
+              {/* Skill tags */}
+              <div
+                style={{
+                  display: "flex",
+                  flexWrap: "wrap",
+                  gap: "8px",
+                }}
+              >
+                {cat.skills.map((skill) => (
+                  <SkillTag key={skill} skill={skill} />
                 ))}
-              </ul>
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      <style>{`
+        @media (max-width: 600px) {
+          .skills-row {
+            grid-template-columns: 1fr !important;
+            gap: 12px !important;
+          }
+        }
+      `}</style>
     </section>
+  )
+}
+
+function SkillTag({ skill }: { skill: string }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        padding: "5px 12px",
+        fontSize: "12px",
+        fontWeight: 400,
+        color: "#aaaaaa",
+        border: "1px solid #222222",
+        borderRadius: "4px",
+        cursor: "default",
+        transition: "border-color 0.2s ease, color 0.2s ease",
+        fontFamily: "var(--font-inter, Inter, sans-serif)",
+      }}
+      onMouseEnter={(e) => {
+        const el = e.currentTarget as HTMLElement
+        el.style.borderColor = "#5B9BD5"
+        el.style.color = "#5B9BD5"
+      }}
+      onMouseLeave={(e) => {
+        const el = e.currentTarget as HTMLElement
+        el.style.borderColor = "#222222"
+        el.style.color = "#aaaaaa"
+      }}
+    >
+      {skill}
+    </span>
   )
 }

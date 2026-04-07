@@ -1,6 +1,6 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import Link from "next/link"
 
 interface NavigationProps {
@@ -18,50 +18,156 @@ export default function Navigation({ scrolled }: NavigationProps) {
     { name: "Contact", href: "#contact" },
   ]
 
+  // Close on outside click
+  useEffect(() => {
+    const close = () => setMobileMenuOpen(false)
+    if (mobileMenuOpen) document.addEventListener("click", close)
+    return () => document.removeEventListener("click", close)
+  }, [mobileMenuOpen])
+
   return (
     <nav
-      className={`fixed top-0 w-full z-50 transition-all duration-300 ${
-        scrolled ? "bg-card/90 backdrop-blur-md border-b border-border" : "bg-transparent"
-      }`}
+      style={{
+        position: "fixed",
+        top: 0,
+        width: "100%",
+        zIndex: 50,
+        transition: "background-color 0.3s ease, border-color 0.3s ease",
+        backgroundColor: scrolled ? "#0a0a0a" : "transparent",
+        borderBottom: scrolled ? "1px solid #222222" : "1px solid transparent",
+      }}
     >
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Link href="#" className="text-2xl font-bold text-white">
+      <div
+        style={{
+          maxWidth: "1200px",
+          margin: "0 auto",
+          padding: "0 32px",
+          height: "64px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
+        {/* Logo */}
+        <Link
+          href="#"
+          style={{
+            fontFamily: "var(--font-syne, Syne, sans-serif)",
+            fontSize: "20px",
+            fontWeight: 700,
+            letterSpacing: "-0.02em",
+            color: "#f5f5f5",
+            textDecoration: "none",
+          }}
+        >
           RK
         </Link>
 
-        <div className="hidden md:flex gap-8">
+        {/* Desktop Nav */}
+        <div
+          style={{
+            display: "flex",
+            gap: "36px",
+            alignItems: "center",
+          }}
+          className="hidden-mobile"
+        >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-300"
+              style={{
+                fontSize: "13px",
+                fontWeight: 400,
+                letterSpacing: "0.02em",
+                color: "#888888",
+                textDecoration: "none",
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#f5f5f5")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}
             >
               {item.name}
             </a>
           ))}
         </div>
 
-        <button className="md:hidden text-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+        {/* Mobile Hamburger */}
+        <button
+          aria-label="Toggle menu"
+          onClick={(e) => {
+            e.stopPropagation()
+            setMobileMenuOpen((o) => !o)
+          }}
+          style={{
+            display: "none",
+            background: "none",
+            border: "none",
+            cursor: "pointer",
+            padding: "8px",
+            color: "#f5f5f5",
+          }}
+          className="show-mobile"
+        >
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.5">
+            {mobileMenuOpen ? (
+              <>
+                <line x1="4" y1="4" x2="16" y2="16" />
+                <line x1="16" y1="4" x2="4" y2="16" />
+              </>
+            ) : (
+              <>
+                <line x1="3" y1="6" x2="17" y2="6" />
+                <line x1="3" y1="10" x2="17" y2="10" />
+                <line x1="3" y1="14" x2="17" y2="14" />
+              </>
+            )}
           </svg>
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {mobileMenuOpen && (
-        <div className="md:hidden bg-card border-b border-border">
+        <div
+          style={{
+            backgroundColor: "#0a0a0a",
+            borderBottom: "1px solid #222222",
+            animation: "fadeIn 0.2s ease",
+          }}
+          onClick={(e) => e.stopPropagation()}
+        >
           {navItems.map((item) => (
             <a
               key={item.name}
               href={item.href}
-              className="block px-6 py-3 text-sm text-muted-foreground hover:text-primary transition-colors"
               onClick={() => setMobileMenuOpen(false)}
+              style={{
+                display: "block",
+                padding: "14px 32px",
+                fontSize: "13px",
+                color: "#888888",
+                textDecoration: "none",
+                borderBottom: "1px solid #1a1a1a",
+                transition: "color 0.2s ease",
+              }}
+              onMouseEnter={(e) => (e.currentTarget.style.color = "#f5f5f5")}
+              onMouseLeave={(e) => (e.currentTarget.style.color = "#888888")}
             >
               {item.name}
             </a>
           ))}
         </div>
       )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .hidden-mobile { display: none !important; }
+          .show-mobile   { display: flex !important; }
+        }
+        @media (min-width: 769px) {
+          .show-mobile { display: none !important; }
+        }
+      `}</style>
     </nav>
   )
 }

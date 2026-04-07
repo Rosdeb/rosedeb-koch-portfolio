@@ -4,12 +4,7 @@ import type React from "react"
 import { useState } from "react"
 
 export default function Contact() {
-  const [formData, setFormData] = useState({
-    name: "",
-    email: "",
-    message: "",
-  })
-
+  const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
 
@@ -23,101 +18,237 @@ export default function Contact() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
-
     try {
       const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(formData),
       })
-
       if (res.ok) {
         setSubmitted(true)
         setFormData({ name: "", email: "", message: "" })
       } else {
-        const errorData = await res.json();
-        console.error("Form submission error:", errorData);
-        alert(`Error: ${errorData.error || "Failed to send message"}`);
+        const err = await res.json()
+        alert(`Error: ${err.error || "Failed to send message"}`)
       }
     } catch (err) {
-      console.error("Network error:", err)
-      alert("Network error. Please try again later.");
+      alert("Network error. Please try again later.")
     } finally {
       setLoading(false)
-      setTimeout(() => setSubmitted(false), 3000)
+      setTimeout(() => setSubmitted(false), 5000)
     }
   }
 
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "12px 16px",
+    backgroundColor: "transparent",
+    border: "1px solid #222222",
+    borderRadius: "4px",
+    color: "#f5f5f5",
+    fontSize: "14px",
+    fontFamily: "var(--font-inter, Inter, sans-serif)",
+    fontWeight: 300,
+    outline: "none",
+    transition: "border-color 0.2s ease",
+  }
+
   return (
-    <section id="contact" className="py-20 px-6 max-w-4xl mx-auto">
-      <h2 className="text-4xl font-bold mb-6">Let's Connect</h2>
-      <div className="w-12 h-1 bg-primary mb-12" />
+    <section
+      id="contact"
+      style={{
+        padding: "120px 32px",
+        borderTop: "1px solid #222222",
+        backgroundColor: "#0a0a0a",
+      }}
+    >
+      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+        {/* Section label */}
+        <p
+          style={{
+            fontSize: "11px",
+            fontWeight: 500,
+            letterSpacing: "0.12em",
+            textTransform: "uppercase",
+            color: "#555555",
+            marginBottom: "24px",
+            fontFamily: "var(--font-inter, Inter, sans-serif)",
+          }}
+        >
+          06 — Contact
+        </p>
 
-      {/* Progress Bar */}
-      {loading && (
-        <div className="w-full h-1 bg-muted mb-6 overflow-hidden rounded">
-          <div className="h-full bg-primary animate-pulse w-full" />
-        </div>
-      )}
+        <h2
+          style={{
+            fontFamily: "var(--font-syne, Syne, sans-serif)",
+            fontSize: "clamp(28px, 4vw, 44px)",
+            fontWeight: 700,
+            letterSpacing: "-0.025em",
+            color: "#f5f5f5",
+            marginBottom: "64px",
+          }}
+        >
+          Let's Work Together
+        </h2>
 
-      <div className="grid md:grid-cols-2 gap-12">
-        <div>
-          <p className="text-muted-foreground mb-6 leading-relaxed">
-            Have a project in mind or want to discuss opportunities? I'd love to hear from you.
+        {/* Large email */}
+        <div style={{ marginBottom: "72px" }}>
+          <p
+            style={{
+              fontSize: "12px",
+              color: "#555555",
+              letterSpacing: "0.06em",
+              textTransform: "uppercase",
+              marginBottom: "12px",
+              fontFamily: "var(--font-inter, Inter, sans-serif)",
+            }}
+          >
+            Reach out directly
           </p>
+          <a
+            href="mailto:rosdebkoch@gmail.com"
+            style={{
+              fontFamily: "var(--font-syne, Syne, sans-serif)",
+              fontSize: "clamp(22px, 4vw, 40px)",
+              fontWeight: 700,
+              letterSpacing: "-0.025em",
+              color: "#f5f5f5",
+              textDecoration: "none",
+              transition: "color 0.2s ease",
+              display: "inline-block",
+            }}
+            onMouseEnter={(e) => (e.currentTarget.style.color = "#5B9BD5")}
+            onMouseLeave={(e) => (e.currentTarget.style.color = "#f5f5f5")}
+          >
+            rosdebkoch@gmail.com
+          </a>
 
-          <div className="space-y-6">
-            <div>
-              <h3 className="text-sm font-semibold text-primary mb-2">Email</h3>
+          {/* Social links */}
+          <div
+            style={{
+              display: "flex",
+              gap: "24px",
+              marginTop: "24px",
+              flexWrap: "wrap",
+            }}
+          >
+            {[
+              { label: "GitHub", href: "https://github.com/Rosdeb" },
+              {
+                label: "LinkedIn",
+                href: "https://www.linkedin.com/in/rosdev-koch-260005324/",
+              },
+              { label: "Twitter", href: "#" },
+            ].map((link) => (
               <a
-                href="mailto:rosdebkoch@gmail.com"
-                className="text-muted-foreground hover:text-primary transition-colors"
+                key={link.label}
+                href={link.href}
+                target={link.href !== "#" ? "_blank" : undefined}
+                rel="noopener noreferrer"
+                style={{
+                  fontSize: "13px",
+                  color: "#555555",
+                  textDecoration: "none",
+                  fontFamily: "var(--font-inter, Inter, sans-serif)",
+                  letterSpacing: "0.02em",
+                  transition: "color 0.2s ease",
+                }}
+                onMouseEnter={(e) => (e.currentTarget.style.color = "#5B9BD5")}
+                onMouseLeave={(e) => (e.currentTarget.style.color = "#555555")}
               >
-                rosdebkoch@gmail.com
+                {link.label} ↗
               </a>
-            </div>
+            ))}
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          <input
-            type="text"
-            name="name"
-            placeholder="Your Name"
-            value={formData.name}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 bg-card border rounded-lg"
-          />
+        {/* Divider */}
+        <div style={{ height: "1px", backgroundColor: "#1a1a1a", marginBottom: "64px" }} />
 
-          <input
-            type="email"
-            name="email"
-            placeholder="Your Email"
-            value={formData.email}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 bg-card border rounded-lg"
-          />
-
-          <textarea
-            name="message"
-            placeholder="Your Message"
-            rows={5}
-            value={formData.message}
-            onChange={handleChange}
-            required
-            className="w-full px-4 py-3 bg-card border rounded-lg resize-none"
-          />
-
-          <button
-            type="submit"
-            disabled={loading}
-            className="w-full px-6 py-3 bg-primary text-primary-foreground rounded-lg font-medium"
+        {/* Contact form */}
+        <div style={{ maxWidth: "560px" }}>
+          <p
+            style={{
+              fontSize: "13px",
+              color: "#555555",
+              marginBottom: "32px",
+              fontFamily: "var(--font-inter, Inter, sans-serif)",
+              lineHeight: "1.6",
+            }}
           >
-            {loading ? "Sending..." : submitted ? "Message Sent!" : "Send Message"}
-          </button>
-        </form>
+            Or use the form below — I usually respond within 48 hours.
+          </p>
+
+          {submitted ? (
+            <div
+              style={{
+                padding: "20px 24px",
+                border: "1px solid #5B9BD5",
+                borderRadius: "4px",
+                animation: "fadeIn 0.3s ease",
+              }}
+            >
+              <p
+                style={{
+                  fontSize: "14px",
+                  color: "#5B9BD5",
+                  fontFamily: "var(--font-inter, Inter, sans-serif)",
+                }}
+              >
+                Message sent. I'll be in touch soon.
+              </p>
+            </div>
+          ) : (
+            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+              <input
+                type="text"
+                name="name"
+                placeholder="Your name"
+                value={formData.name}
+                onChange={handleChange}
+                required
+                style={inputStyle}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#5B9BD5")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#222222")}
+              />
+              <input
+                type="email"
+                name="email"
+                placeholder="your@email.com"
+                value={formData.email}
+                onChange={handleChange}
+                required
+                style={inputStyle}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#5B9BD5")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#222222")}
+              />
+              <textarea
+                name="message"
+                placeholder="Your message"
+                rows={5}
+                value={formData.message}
+                onChange={handleChange}
+                required
+                style={{ ...inputStyle, resize: "none" }}
+                onFocus={(e) => (e.currentTarget.style.borderColor = "#5B9BD5")}
+                onBlur={(e) => (e.currentTarget.style.borderColor = "#222222")}
+              />
+              <button
+                type="submit"
+                disabled={loading}
+                className="btn-primary"
+                style={{ alignSelf: "flex-start", opacity: loading ? 0.6 : 1, cursor: loading ? "not-allowed" : "pointer" }}
+              >
+                {loading ? "Sending..." : "Send Message"}
+                {!loading && (
+                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+                    <path d="M2 7h10M8 3l4 4-4 4" />
+                  </svg>
+                )}
+              </button>
+            </form>
+          )}
+        </div>
       </div>
     </section>
   )
