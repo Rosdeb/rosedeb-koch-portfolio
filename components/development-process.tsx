@@ -88,9 +88,8 @@ export default function DevelopmentProcess() {
             border: "1px solid rgba(146, 139, 156, 0.32)",
             borderRadius: "28px",
             padding: "48px 32px",
-             background:
-      "radial-gradient(circle at top, rgba(92, 131, 116, 0.25), transparent 35%), linear-gradient(180deg, #7DAA9B 0%, #5C8374 55%, #3F5F56 100%)",
-    boxShadow: "0 24px 80px rgba(14, 10, 24, 0.2)",
+             background: "radial-gradient(circle at top, rgba(92, 131, 116, 0.25), transparent 35%), linear-gradient(180deg, #7DAA9B 0%, #5C8374 55%, #3F5F56 100%)",
+            boxShadow: "0 24px 80px rgba(14, 10, 24, 0.2)",
             overflow: "hidden",
             position: "relative",
           }}
