@@ -6,7 +6,7 @@
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
   /* Palette */
-  --background: #021A54;
+  --background: #002455;
   --surface: #5B4B8A;
   --surface-elevated: #7858A6;
   --border: #7858A6;
@@ -40,6 +40,7 @@
   --radius: 4px;
   --radius-sm: 2px;
   --radius-md: 4px;
+  --container-width: 1280px;
 
   /* Fonts */
   --font-heading: "Space Grotesk", system-ui, sans-serif;

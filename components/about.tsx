@@ -8,7 +8,7 @@ export default function About() {
         backgroundColor: "var(--background)",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "var(--container-width)", margin: "0 auto" }}>
         {/* Section label */}
         <p
           style={{

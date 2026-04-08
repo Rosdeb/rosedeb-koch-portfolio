@@ -24,10 +24,10 @@ export default function Skills() {
       style={{
         padding: "120px 32px",
         borderTop: "1px solid var(--border)",
-        backgroundColor: "var(--surface-elevated)",
+        backgroundColor: "#393D7E",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "var(--container-width)", margin: "0 auto" }}>
         {/* Section label */}
         <p
           style={{

@@ -29,10 +29,10 @@ export default function Experience() {
       style={{
         padding: "120px 32px",
         borderTop: "1px solid var(--border)",
-        backgroundColor: "var(--surface)",
+        backgroundColor: "var(--background)",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "var(--container-width)", margin: "0 auto" }}>
         {/* Section label */}
         <p
           style={{
@@ -79,10 +79,10 @@ export default function Experience() {
                 <span
                   style={{
                     fontSize: "12px",
-                    color: idx === 0 ? "var(--accent)" : "var(--muted)",
+                    color: idx === 0 ? "var(--accent-warm)" : "var(--muted)",
                     fontFamily: "var(--font-inter, Inter, sans-serif)",
                     letterSpacing: "0.02em",
-                    fontWeight: idx === 0 ? 500 : 400,
+                    fontWeight: idx === 0 ? 600 : 400,
                   }}
                 >
                   {exp.year}
@@ -93,7 +93,7 @@ export default function Experience() {
               <div
                 style={{
                   paddingLeft: "24px",
-                  borderLeft: `1px solid ${idx === 0 ? "var(--accent)" : "var(--border-muted)"}`,
+                  borderLeft: `1px solid ${idx === 0 ? "var(--accent-soft)" : "var(--border-muted)"}`,
                   transition: "border-color 0.2s ease",
                 }}
               >

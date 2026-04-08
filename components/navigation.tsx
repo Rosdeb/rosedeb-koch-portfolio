@@ -42,7 +42,7 @@ export default function Navigation({ scrolled, scrollingUp }: NavigationProps) {
     >
       <div
         style={{
-          maxWidth: "1200px",
+          maxWidth: "var(--container-width)",
           margin: "0 auto",
           padding: "0 32px",
           height: "64px",

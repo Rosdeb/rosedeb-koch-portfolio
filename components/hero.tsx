@@ -40,7 +40,7 @@ export default function Hero() {
 
       <div
         style={{
-          maxWidth: "1200px",
+          maxWidth: "var(--container-width)",
           margin: "0 auto",
           padding: "0 32px",
           width: "100%",
@@ -69,10 +69,10 @@ export default function Hero() {
             <p
               style={{
                 fontSize: "12px",
-                fontWeight: 500,
+                fontWeight: 700,
                 letterSpacing: "0.12em",
                 textTransform: "uppercase",
-                color: "var(--accent)",
+                color: "#FFFFFF",
                 marginBottom: "24px",
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
               }}

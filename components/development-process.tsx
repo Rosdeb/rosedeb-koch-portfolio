@@ -55,7 +55,7 @@ export default function DevelopmentProcess() {
         backgroundColor: "var(--background)",
       }}
     >
-      <div style={{ maxWidth: "1200px", margin: "0 auto" }}>
+      <div style={{ maxWidth: "var(--container-width)", margin: "0 auto" }}>
         <p
           style={{
             fontSize: "11px",
