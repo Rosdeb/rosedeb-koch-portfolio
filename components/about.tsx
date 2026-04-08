@@ -35,6 +35,20 @@ export default function About() {
         >
           {/* ── Left: Oversized pull stat ── */}
           <div>
+            <p
+              style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--accent-warm)",
+                marginBottom: "20px",
+                fontFamily: "var(--font-inter, Inter, sans-serif)",
+              }}
+            >
+              Mobile Engineer
+            </p>
+
             <div
               style={{
                 fontFamily: "var(--font-syne, Syne, sans-serif)",
@@ -46,7 +60,7 @@ export default function About() {
                 marginBottom: "8px",
               }}
             >
-              5+
+              1.2+
             </div>
             <div
               style={{
@@ -58,20 +72,22 @@ export default function About() {
                 marginBottom: "40px",
               }}
             >
-              Years building mobile
+              Years delivering
               <br />
-              products people rely on
+              production-ready mobile apps
             </div>
 
             <div
               style={{
                 display: "flex",
                 gap: "40px",
+                flexWrap: "wrap",
+                marginBottom: "40px",
               }}
             >
               {[
-                { value: "20+", label: "Projects" },
-                { value: "4", label: "Platforms" },
+                { value: "12+", label: "Projects" },
+                { value: "5+", label: "Live Apps" },
               ].map((s) => (
                 <div key={s.label}>
                   <div
@@ -97,10 +113,53 @@ export default function About() {
                 </div>
               ))}
             </div>
+
+            <div
+              style={{
+                display: "grid",
+                gap: "12px",
+              }}
+            >
+              {[
+                "Cross-platform delivery with Flutter and Dart",
+                "Native implementation across Kotlin, Java, and Swift",
+                "Product-focused execution from UI to release support",
+              ].map((item) => (
+                <div
+                  key={item}
+                  style={{
+                    padding: "14px 16px",
+                    borderRadius: "16px",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    backgroundColor: "rgba(255,255,255,0.03)",
+                    color: "var(--muted-light)",
+                    fontSize: "13px",
+                    lineHeight: "1.6",
+                    fontFamily: "var(--font-inter, Inter, sans-serif)",
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
           </div>
 
           {/* ── Right: Bio + links ── */}
           <div>
+            <p
+              style={{
+                fontSize: "11px",
+                fontWeight: 700,
+                letterSpacing: "0.12em",
+                textTransform: "uppercase",
+                color: "var(--muted)",
+                marginBottom: "16px",
+                fontFamily: "var(--font-inter, Inter, sans-serif)",
+              }}
+            >
+              Professional Profile
+            </p>
+
             <p
               style={{
                 fontSize: "16px",
@@ -111,10 +170,11 @@ export default function About() {
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
               }}
             >
-              I'm a passionate mobile developer with a deep commitment to creating
-              applications that are both beautiful and performant. With expertise
-              across multiple platforms, I bring a holistic approach to mobile
-              development.
+              I am a mobile application developer focused on building reliable,
+              user-centered products with Flutter, Kotlin, Java, and Swift. My
+              work covers the full delivery cycle, from translating product
+              requirements into scalable architecture to shipping polished
+              experiences for production.
             </p>
             <p
               style={{
@@ -126,10 +186,44 @@ export default function About() {
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
               }}
             >
-              My journey spans several years, across startup MVPs to enterprise
-              applications. I believe in clean, maintainable code and
-              collaborative team environments.
+              I work best in environments where speed matters but quality still
+              has to hold up in real use. I care about maintainable code,
+              thoughtful UI implementation, API integration, performance, and
+              collaboration with designers, QA, and stakeholders throughout the
+              release process.
             </p>
+
+            <div
+              style={{
+                display: "grid",
+                gridTemplateColumns: "repeat(2, minmax(0, 1fr))",
+                gap: "12px",
+                marginBottom: "40px",
+              }}
+              className="about-focus-grid"
+            >
+              {[
+                "App architecture",
+                "API integration",
+                "Clean UI implementation",
+                "Store-ready delivery",
+              ].map((item) => (
+                <div
+                  key={item}
+                  style={{
+                    padding: "12px 14px",
+                    borderRadius: "14px",
+                    border: "1px solid rgba(255,255,255,0.08)",
+                    backgroundColor: "rgba(255,255,255,0.03)",
+                    fontSize: "13px",
+                    color: "var(--foreground)",
+                    fontFamily: "var(--font-inter, Inter, sans-serif)",
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
+            </div>
 
             {/* Divider */}
             <div
@@ -149,7 +243,7 @@ export default function About() {
                   label: "LinkedIn",
                   href: "https://www.linkedin.com/in/rosdev-koch-260005324/",
                 },
-                { label: "Twitter", href: "#" },
+                { label: "Email", href: "mailto:rosdebkoch@gmail.com" },
               ].map((link) => (
                 <a
                   key={link.label}
@@ -184,6 +278,10 @@ export default function About() {
           .about-grid {
             grid-template-columns: 1fr !important;
             gap: 48px !important;
+          }
+
+          .about-focus-grid {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>

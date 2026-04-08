@@ -44,7 +44,9 @@ export default function Hero() {
           margin: "0 auto",
           padding: "0 32px",
           width: "100%",
+          transform: "translateY(-44px)",
         }}
+        className="hero-shell"
       >
         <div
           style={{
@@ -69,8 +71,8 @@ export default function Hero() {
             <p
               style={{
                 fontSize: "12px",
-                fontWeight: 700,
-                letterSpacing: "0.12em",
+                fontWeight: 800,
+                letterSpacing: "0.15cm",
                 textTransform: "uppercase",
                 color: "#FFFFFF",
                 marginBottom: "24px",
@@ -167,6 +169,10 @@ export default function Hero() {
               <div className="hero-skill-chip">
                 <span>Flutter</span>
                 <span className="hero-chip-divider" />
+                <span>Dart</span>
+                <span className="hero-chip-divider" />
+                <span>Java</span>
+                <span className="hero-chip-divider" />
                 <span>Kotlin</span>
                 <span className="hero-chip-divider" />
                 <span>Swift</span>
@@ -175,10 +181,11 @@ export default function Hero() {
 
             <div className="hero-stats-panel">
               {[
-                { value: "5+", label: "Years" },
-                { value: "20+", label: "Projects" },
-                { value: "4", label: "Platforms" },
-              ].map((s) => (
+                { value: "1.2+", label: "Years" },
+                { value: "12+", label: "Projects" },
+                { value: "5+", label: "Live Apps" },
+              
+                 ].map((s) => (
                 <div key={s.label} className="hero-stat-item">
                   <div className="hero-stat-value">{s.value}</div>
                   <div className="hero-stat-label">{s.label}</div>
@@ -428,6 +435,10 @@ export default function Hero() {
         }
 
         @media (max-width: 768px) {
+          .hero-shell {
+            transform: translateY(-20px) !important;
+          }
+
           .hero-flex {
             flex-direction: column !important;
             align-items: flex-start !important;
@@ -464,6 +475,10 @@ export default function Hero() {
         }
 
         @media (max-width: 520px) {
+          .hero-shell {
+            transform: translateY(-8px) !important;
+          }
+
           .hero-portrait-stage {
             width: min(100%, 300px);
           }

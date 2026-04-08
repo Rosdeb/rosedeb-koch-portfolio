@@ -1,22 +1,28 @@
+const skillCategories = [
+  {
+    category: "Cross-Platform",
+    skills: ["Flutter", "Dart"],
+    className: "cube-card cube-card-cross",
+  },
+  {
+    category: "Android",
+    skills: ["Kotlin", "Java", "Android Studio", "XML"],
+    className: "cube-card cube-card-android",
+  },
+  {
+    category: "iOS",
+    skills: ["Swift", "SwiftUI"],
+    className: "cube-card cube-card-ios",
+  },
+  {
+    category: "Tools & Platforms",
+    skills: ["Git", "Agora", "Google Maps", "Socket.io", "IoT", "Firebase", "REST APIs", "CI/CD"],
+    className: "cube-card cube-card-tools",
+  },
+]
+
 export default function Skills() {
-  const skillCategories = [
-    {
-      category: "Cross-Platform",
-      skills: ["Flutter", "Dart"],
-    },
-    {
-      category: "Android",
-      skills: ["Kotlin", "Java", "Android Studio", "XML"],
-    },
-    {
-      category: "iOS",
-      skills: ["Swift", "SwiftUI"],
-    },
-    {
-      category: "Tools & Platforms",
-      skills: ["Git", "Agora", "Google Maps", "Socket.io", "IoT", "Firebase", "REST APIs", "CI/CD"],
-    },
-  ]
+  const totalSkills = skillCategories.reduce((count, category) => count + category.skills.length, 0)
 
   return (
     <section
@@ -24,11 +30,12 @@ export default function Skills() {
       style={{
         padding: "120px 32px",
         borderTop: "1px solid var(--border)",
-        backgroundColor: "#393D7E",
+        background:
+          "radial-gradient(circle at top, rgba(200, 212, 255, 0.16), transparent 28%), linear-gradient(180deg, #393D7E 0%, #343873 100%)",
+        overflow: "hidden",
       }}
     >
       <div style={{ maxWidth: "var(--container-width)", margin: "0 auto" }}>
-        {/* Section label */}
         <p
           style={{
             fontSize: "11px",
@@ -43,79 +50,305 @@ export default function Skills() {
           03 — Skills
         </p>
 
-        <h2
+        <div
           style={{
-            fontFamily: "var(--font-syne, Syne, sans-serif)",
-            fontSize: "clamp(28px, 4vw, 44px)",
-            fontWeight: 700,
-            letterSpacing: "-0.025em",
-            color: "var(--foreground)",
-            marginBottom: "64px",
+            display: "grid",
+            gridTemplateColumns: "minmax(0, 0.92fr) minmax(0, 1.08fr)",
+            gap: "42px",
+            alignItems: "center",
           }}
+          className="skills-layout"
         >
-          Technical Expertise
-        </h2>
+          <div style={{ maxWidth: "520px" }}>
+            <h2
+              style={{
+                fontFamily: "var(--font-syne, Syne, sans-serif)",
+                fontSize: "clamp(28px, 4vw, 44px)",
+                fontWeight: 700,
+                letterSpacing: "-0.025em",
+                color: "var(--foreground)",
+                marginBottom: "20px",
+              }}
+            >
+              Technical Expertise
+            </h2>
 
-        {/* Definition list rows */}
-        <div>
-          {skillCategories.map((cat, idx) => (
+            <p
+              style={{
+                fontSize: "16px",
+                lineHeight: "1.8",
+                color: "rgba(232, 226, 245, 0.82)",
+                marginBottom: "28px",
+                fontFamily: "var(--font-inter, Inter, sans-serif)",
+              }}
+            >
+              A rounded, product-focused skill set built around cross-platform delivery, native mobile engineering, and the tools needed to ship reliable apps.
+            </p>
+
             <div
-              key={cat.category}
+              style={{
+                display: "flex",
+                gap: "12px",
+                flexWrap: "wrap",
+                marginBottom: "28px",
+              }}
+            >
+              <InfoPill label={`${skillCategories.length} capability zones`} />
+              <InfoPill label={`${totalSkills} core tools`} />
+              <InfoPill label="Cupertino-inspired workflow" />
+            </div>
+
+            <div
               style={{
                 display: "grid",
-                gridTemplateColumns: "200px 1fr",
-                gap: "32px",
-                alignItems: "start",
-                padding: "28px 0",
-                borderTop: "1px solid var(--border-muted)",
-                borderBottom:
-                  idx === skillCategories.length - 1
-                    ? "1px solid var(--border-muted)"
-                    : "none",
+                gap: "12px",
               }}
-              className="skills-row"
             >
-              {/* Category label */}
-              <span
-                style={{
-                  fontSize: "12px",
-                  fontWeight: 500,
-                  letterSpacing: "0.04em",
-                  color: "var(--muted)",
-                  textTransform: "uppercase",
-                  fontFamily: "var(--font-inter, Inter, sans-serif)",
-                  paddingTop: "4px",
-                }}
-              >
-                {cat.category}
-              </span>
-
-              {/* Skill tags */}
-              <div
-                style={{
-                  display: "flex",
-                  flexWrap: "wrap",
-                  gap: "8px",
-                }}
-              >
-                {cat.skills.map((skill) => (
-                  <SkillTag key={skill} skill={skill} />
-                ))}
-              </div>
+              {[
+                "Cross-platform apps with Flutter and Dart",
+                "Native Android delivery with Kotlin, Java, Android Studio, and XML",
+                "Modern iOS implementation with Swift and SwiftUI",
+                "Production tooling across Firebase, APIs, maps, real-time communication, and CI/CD",
+              ].map((item) => (
+                <div
+                  key={item}
+                  style={{
+                    padding: "15px 18px",
+                    borderRadius: "22px",
+                    border: "1px solid rgba(255,255,255,0.1)",
+                    background: "rgba(255,255,255,0.06)",
+                    backdropFilter: "blur(18px)",
+                    color: "rgba(241, 235, 250, 0.88)",
+                    fontSize: "14px",
+                    lineHeight: "1.65",
+                    boxShadow: "0 16px 38px rgba(10, 12, 44, 0.18)",
+                    fontFamily: "var(--font-inter, Inter, sans-serif)",
+                  }}
+                >
+                  {item}
+                </div>
+              ))}
             </div>
-          ))}
+          </div>
+
+          <div className="skills-stage">
+            <div className="cube-floor" aria-hidden />
+            {skillCategories.map((category) => (
+              <article key={category.category} className={category.className}>
+                <div className="cube-top" aria-hidden />
+                <div className="cube-side" aria-hidden />
+                <div className="cube-front">
+                  <p className="skills-card-title">{category.category}</p>
+                  <div className="skills-chip-wrap">
+                    {category.skills.map((skill) => (
+                      <SkillTag key={skill} skill={skill} />
+                    ))}
+                  </div>
+                </div>
+              </article>
+            ))}
+
+          </div>
         </div>
       </div>
 
       <style>{`
-        @media (max-width: 600px) {
-          .skills-row {
+        @keyframes skillFloat {
+          0%, 100% { transform: translate3d(0, 0, 0); }
+          50% { transform: translate3d(0, -10px, 0); }
+        }
+
+        @keyframes skillPulse {
+          0%, 100% { opacity: 0.45; transform: scale(1); }
+          50% { opacity: 0.8; transform: scale(1.08); }
+        }
+
+        .skills-layout {
+          position: relative;
+        }
+
+        .skills-stage {
+          position: relative;
+          min-height: 700px;
+          border-radius: 42px;
+          background:
+            radial-gradient(circle at top, rgba(208, 216, 255, 0.12), transparent 26%),
+            linear-gradient(180deg, rgba(104, 112, 191, 0.28) 0%, rgba(69, 74, 142, 0.18) 100%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 90px rgba(11, 13, 42, 0.16);
+          overflow: hidden;
+          perspective: 1400px;
+        }
+
+        .cube-floor {
+          position: absolute;
+          inset: auto 7% 38px;
+          height: 120px;
+          border-radius: 999px;
+          background: radial-gradient(circle, rgba(10, 12, 44, 0.12), rgba(10, 12, 44, 0.01) 70%, transparent 100%);
+          filter: blur(18px);
+          pointer-events: none;
+        }
+
+        .cube-card {
+          position: absolute;
+          transform-style: preserve-3d;
+          animation: skillFloat 7s ease-in-out infinite;
+        }
+
+        .cube-front,
+        .cube-top,
+        .cube-side {
+          position: absolute;
+          border-radius: 16px;
+          background: linear-gradient(180deg, rgba(230, 235, 255, 0.34) 0%, rgba(205, 214, 248, 0.22) 100%);
+          border: 1px solid rgba(255, 255, 255, 0.16);
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.18),
+            0 16px 30px rgba(25, 30, 82, 0.12);
+          backdrop-filter: blur(18px);
+        }
+
+        .cube-front {
+          inset: 0;
+          padding: 20px 18px 18px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+
+        .cube-top {
+          left: 12px;
+          right: 12px;
+          top: -18px;
+          height: 34px;
+          transform: rotateX(70deg);
+          transform-origin: bottom center;
+          opacity: 0.82;
+          background: linear-gradient(180deg, rgba(245, 247, 255, 0.38) 0%, rgba(217, 223, 248, 0.18) 100%);
+        }
+
+        .cube-side {
+          top: 8px;
+          bottom: 10px;
+          right: -18px;
+          width: 34px;
+          transform: rotateY(-68deg);
+          transform-origin: left center;
+          opacity: 0.72;
+          background: linear-gradient(180deg, rgba(240, 244, 255, 0.34) 0%, rgba(211, 218, 247, 0.18) 100%);
+        }
+
+        .cube-card-cross {
+          top: 74px;
+          left: 28px;
+          width: 220px;
+          height: 158px;
+          animation-delay: 0.2s;
+        }
+
+        .cube-card-android {
+          top: 20px;
+          right: 34px;
+          width: 296px;
+          height: 184px;
+          animation-delay: 0.9s;
+        }
+
+        .cube-card-ios {
+          left: 52px;
+          bottom: 56px;
+          width: 210px;
+          height: 160px;
+          animation-delay: 1.4s;
+        }
+
+        .cube-card-tools {
+          right: 16px;
+          bottom: 22px;
+          width: 382px;
+          height: 220px;
+          animation-delay: 0.5s;
+        }
+
+        .skills-card-title {
+          margin: 0;
+          font-size: 12px;
+          font-weight: 700;
+          letter-spacing: 0.12em;
+          text-transform: uppercase;
+          color: rgba(255, 247, 221, 0.96);
+          font-family: var(--font-inter, Inter, sans-serif);
+        }
+
+        .skills-chip-wrap {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 10px;
+          position: relative;
+          z-index: 3;
+        }
+
+        @media (max-width: 1180px) {
+          .skills-layout {
             grid-template-columns: 1fr !important;
-            gap: 12px !important;
+          }
+
+          .skills-stage {
+            min-height: auto !important;
+            padding: 26px !important;
+            display: grid !important;
+            gap: 18px !important;
+            grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+          }
+
+          .cube-card {
+            position: relative !important;
+            top: auto !important;
+            right: auto !important;
+            bottom: auto !important;
+            left: auto !important;
+            width: 100% !important;
+            height: auto !important;
+            transform: none !important;
+          }
+
+          .cube-top,
+          .cube-side {
+            display: none !important;
+          }
+
+        }
+
+        @media (max-width: 700px) {
+          .skills-stage {
+            grid-template-columns: 1fr !important;
           }
         }
       `}</style>
     </section>
+  )
+}
+
+function InfoPill({ label }: { label: string }) {
+  return (
+    <span
+      style={{
+        display: "inline-flex",
+        alignItems: "center",
+        minHeight: "40px",
+        padding: "0 14px",
+        borderRadius: "999px",
+        border: "1px solid rgba(255,255,255,0.12)",
+        background: "rgba(255,255,255,0.08)",
+        color: "var(--foreground)",
+        fontSize: "12px",
+        letterSpacing: "0.04em",
+        textTransform: "uppercase",
+        fontFamily: "var(--font-inter, Inter, sans-serif)",
+      }}
+    >
+      {label}
+    </span>
   )
 }
 
@@ -125,26 +358,17 @@ function SkillTag({ skill }: { skill: string }) {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        padding: "5px 12px",
+        justifyContent: "center",
+        minHeight: "38px",
+        padding: "0 14px",
+        borderRadius: "999px",
         fontSize: "12px",
-        fontWeight: 400,
-        color: "var(--muted-light)",
-        border: "1px solid var(--border)",
-        borderRadius: "4px",
-        cursor: "default",
-        transition: "border-color 0.2s ease, color 0.2s ease",
-        backgroundColor: "rgba(36, 52, 61, 0.72)",
+        fontWeight: 500,
+        color: "rgba(255, 247, 221, 0.96)",
+        border: "1px solid rgba(255, 255, 255, 0.12)",
+        background: "linear-gradient(180deg, rgba(198, 207, 244, 0.22) 0%, rgba(173, 184, 228, 0.16) 100%)",
+        boxShadow: "inset 0 1px 0 rgba(255,255,255,0.22)",
         fontFamily: "var(--font-inter, Inter, sans-serif)",
-      }}
-      onMouseEnter={(e) => {
-        const el = e.currentTarget as HTMLElement
-        el.style.borderColor = "var(--accent)"
-        el.style.color = "var(--accent)"
-      }}
-      onMouseLeave={(e) => {
-        const el = e.currentTarget as HTMLElement
-        el.style.borderColor = "var(--border)"
-        el.style.color = "var(--muted-light)"
       }}
     >
       {skill}

@@ -5,7 +5,6 @@ import Navigation from "@/components/navigation"
 import Hero from "@/components/hero"
 import About from "@/components/about"
 import Skills from "@/components/skills"
-import DevelopmentProcess from "@/components/development-process"
 import Projects from "@/components/projects"
 import Experience from "@/components/experience"
 import Contact from "@/components/contact"
@@ -36,7 +35,6 @@ export default function Home() {
       <Hero />
       <About />
       <Skills />
-      <DevelopmentProcess />
       <Projects />
       <Experience />
       <Contact />

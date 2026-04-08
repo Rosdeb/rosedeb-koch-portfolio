@@ -1,25 +1,25 @@
 export default function Experience() {
   const experiences = [
     {
-      year: "2023 — Present",
-      title: "Senior Mobile Developer",
-      company: "TechCorp Solutions",
+      year: "June - 2025 — Present",
+      title: "Mobile App Developer",
+      company: "SparkTech Agency",
       description:
         "Leading mobile development initiatives, mentoring junior developers, and architecting scalable applications.",
     },
     {
-      year: "2021 — 2023",
-      title: "Mobile Developer",
-      company: "StartupHub Inc",
+      year: "June - 2025 — Present",
+      title: "Junior Flutter Developer",
+      company: "SparkTech Agency",
       description:
         "Developed and deployed multiple cross-platform applications, focusing on user experience and performance.",
     },
     {
-      year: "2020 — 2021",
-      title: "Junior Android Developer",
-      company: "Digital Innovations Ltd",
+      year: "June - 2025 - October 2025",
+      title: "Trainee Flutter Developer",
+      company: "SparkTech Agency",
       description:
-        "Built native Android applications, collaborated with UI/UX teams, and participated in agile development.",
+        "Built Flutter applications for Android and iOS, collaborated with UI/UX teams, and participated in agile development.",
     },
   ]
 
@@ -58,7 +58,7 @@ export default function Experience() {
             marginBottom: "64px",
           }}
         >
-          Work History
+          Industrial Experience
         </h2>
 
         <div style={{ position: "relative" }}>
