@@ -6,7 +6,7 @@
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
   /* Palette */
-  --background: #4C3575;
+  --background: #021A54;
   --surface: #5B4B8A;
   --surface-elevated: #7858A6;
   --border: #7858A6;
@@ -81,9 +81,7 @@
   }
 
   body {
-    background:
-      radial-gradient(circle at top, rgba(120, 88, 166, 0.22), transparent 38%),
-      linear-gradient(180deg, #5B4B8A 0%, #4C3575 55%, #3E2B60 100%);
+    background: var(--background);
     color: var(--foreground);
     font-family: var(--font-body);
     -webkit-font-smoothing: antialiased;
