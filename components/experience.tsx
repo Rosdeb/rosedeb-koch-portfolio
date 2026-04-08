@@ -45,7 +45,7 @@ export default function Experience() {
             fontFamily: "var(--font-inter, Inter, sans-serif)",
           }}
         >
-          05 — Experience
+          06 — Experience
         </p>
 
         <h2
