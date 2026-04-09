@@ -7,6 +7,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" })
   const [loading, setLoading] = useState(false)
   const [submitted, setSubmitted] = useState(false)
+  const spinnerDelays = Array.from({ length: 12 }, (_, index) => `${index * 0.083}s`)
 
   const handleChange = (
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
@@ -51,6 +52,28 @@ export default function Contact() {
     fontWeight: 300,
     outline: "none",
     transition: "border-color 0.2s ease",
+  }
+
+  const submitButtonStyle: React.CSSProperties = {
+    alignSelf: "flex-start",
+    minWidth: "180px",
+    justifyContent: "center",
+    padding: "14px 22px",
+    borderRadius: "999px",
+    fontWeight: 600,
+    letterSpacing: "-0.01em",
+    cursor: loading ? "not-allowed" : "pointer",
+    opacity: 1,
+    background: loading
+      ? "linear-gradient(180deg, rgba(166, 143, 214, 0.96) 0%, rgba(120, 88, 166, 0.96) 100%)"
+      : "linear-gradient(180deg, #9d84d6 0%, #7858A6 100%)",
+    borderColor: loading ? "rgba(255, 247, 221, 0.3)" : "rgba(255, 247, 221, 0.18)",
+    boxShadow: loading
+      ? "0 10px 30px rgba(120, 88, 166, 0.38), inset 0 1px 0 rgba(255,255,255,0.22)"
+      : "0 12px 30px rgba(120, 88, 166, 0.32), inset 0 1px 0 rgba(255,255,255,0.18)",
+    transform: loading ? "scale(0.985)" : "scale(1)",
+    transition:
+      "background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease",
   }
 
   return (
@@ -238,13 +261,44 @@ export default function Contact() {
                 type="submit"
                 disabled={loading}
                 className="btn-primary"
-                style={{ alignSelf: "flex-start", opacity: loading ? 0.6 : 1, cursor: loading ? "not-allowed" : "pointer" }}
+                aria-busy={loading}
+                style={submitButtonStyle}
               >
-                {loading ? "Sending..." : "Send Message"}
-                {!loading && (
-                  <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
-                    <path d="M2 7h10M8 3l4 4-4 4" />
-                  </svg>
+                {loading ? (
+                  <>
+                    <span className="cupertino-spinner" aria-hidden="true">
+                      {spinnerDelays.map((delay, index) => (
+                        <span
+                          key={delay}
+                          className="cupertino-spinner-blade"
+                          style={{
+                            transform: `rotate(${index * 30}deg)`,
+                            animationDelay: delay,
+                          }}
+                        />
+                      ))}
+                    </span>
+                    <span>Sending Message</span>
+                  </>
+                ) : (
+                  <>
+                    <span>Send Message</span>
+                    <span
+                      style={{
+                        display: "inline-flex",
+                        alignItems: "center",
+                        justifyContent: "center",
+                        width: "20px",
+                        height: "20px",
+                        borderRadius: "999px",
+                        backgroundColor: "rgba(255, 255, 255, 0.14)",
+                      }}
+                    >
+                      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.8">
+                        <path d="M2 7h10M8 3l4 4-4 4" />
+                      </svg>
+                    </span>
+                  </>
                 )}
               </button>
             </form>
