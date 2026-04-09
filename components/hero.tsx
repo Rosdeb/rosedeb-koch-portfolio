@@ -19,9 +19,13 @@ export default function Hero() {
         backgroundColor: "var(--background)",
         display: "flex",
         alignItems: "center",
-        paddingTop: "64px",
+        // FIX 1: Increased paddingTop so content clears the navbar (was 64px).
+        // Added paddingBottom so the terminal is never clipped at the bottom.
+        paddingTop: "100px",
+        paddingBottom: "80px",
         position: "relative",
         overflow: "hidden",
+        boxSizing: "border-box",
       }}
     >
       {/* Subtle grid texture */}
@@ -44,7 +48,8 @@ export default function Hero() {
           margin: "0 auto",
           padding: "0 32px",
           width: "100%",
-          transform: "translateY(-44px)",
+          // FIX 2: Removed translateY(-44px) — this was the root cause of
+          // content hiding behind the navbar and the terminal being cut off.
         }}
         className="hero-shell"
       >
@@ -67,7 +72,6 @@ export default function Hero() {
               transition: "opacity 0.6s ease, transform 0.6s ease",
             }}
           >
-            {/* Eyebrow */}
             <p
               style={{
                 fontSize: "12px",
@@ -82,7 +86,6 @@ export default function Hero() {
               Mobile Developer
             </p>
 
-            {/* Name */}
             <h1
               style={{
                 fontFamily: "var(--font-syne, Syne, sans-serif)",
@@ -98,7 +101,6 @@ export default function Hero() {
               Rosdeb Koch
             </h1>
 
-            {/* Role line */}
             <p
               style={{
                 fontSize: "clamp(15px, 2vw, 18px)",
@@ -113,21 +115,14 @@ export default function Hero() {
               Crafting exceptional mobile experiences with Flutter, Kotlin, Java, and Swift — elegant, performant, and built to last.
             </p>
 
-            {/* CTAs */}
             <div style={{ display: "flex", gap: "16px", flexWrap: "wrap" }}>
-              <a
-                href="#projects"
-                className="btn-primary"
-              >
+              <a href="#projects" className="btn-primary">
                 View Work
                 <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
                   <path d="M2 7h10M8 3l4 4-4 4" />
                 </svg>
               </a>
-              <a
-                href="#contact"
-                className="btn-outline"
-              >
+              <a href="#contact" className="btn-outline">
                 Get in Touch
               </a>
             </div>
@@ -184,8 +179,7 @@ export default function Hero() {
                 { value: "1.2+", label: "Years" },
                 { value: "12+", label: "Projects" },
                 { value: "5+", label: "Live Apps" },
-              
-                 ].map((s) => (
+              ].map((s) => (
                 <div key={s.label} className="hero-stat-item">
                   <div className="hero-stat-value">{s.value}</div>
                   <div className="hero-stat-label">{s.label}</div>
@@ -195,17 +189,122 @@ export default function Hero() {
           </div>
         </div>
 
-        {/* Scroll indicator */}
+        {/* ── Terminal ── FIX 3: sits in normal document flow, not absolute */}
+        <div
+          className="hero-terminal"
+          style={{
+            opacity: visible ? 1 : 0,
+            transform: visible ? "translateY(0)" : "translateY(40px)",
+            transition: "opacity 0.8s ease 0.6s, transform 0.8s ease 0.6s",
+            maxWidth: "640px",
+            // FIX 4: margin-top instead of relying on absolute positioning
+            margin: "16px auto 0",
+            borderRadius: "12px",
+            border: "1px solid rgba(128, 161, 186, 0.2)",
+            background: "rgba(20, 30, 36, 0.92)",
+            backdropFilter: "blur(16px)",
+            boxShadow: "0 24px 64px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04)",
+            overflow: "hidden",
+          }}
+        >
+          <div
+            style={{
+              display: "flex",
+              alignItems: "center",
+              gap: "8px",
+              padding: "12px 16px",
+              borderBottom: "1px solid rgba(128, 161, 186, 0.12)",
+              background: "rgba(30, 42, 49, 0.6)",
+            }}
+          >
+            <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#ff5f57" }} />
+            <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#febc2e" }} />
+            <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#28c840" }} />
+            <span
+              style={{
+                marginLeft: "8px",
+                fontSize: "11px",
+                color: "var(--muted)",
+                fontFamily: "var(--font-inter, Inter, monospace)",
+                letterSpacing: "0.02em",
+              }}
+            >
+              main.dart — lib/view/screens
+            </span>
+          </div>
+
+          <div
+            style={{
+              padding: "20px",
+              fontFamily: "'JetBrains Mono', 'Fira Code', 'SF Mono', Consolas, monospace",
+              fontSize: "12px",
+              lineHeight: "1.8",
+              color: "#b8d4e3",
+              overflowX: "auto",
+            }}
+          >
+            <div>
+              <span style={{ color: "#c792ea" }}>class</span>{" "}
+              <span style={{ color: "#82aaff" }}>Portfolio</span> {"{"}
+            </div>
+            <div style={{ paddingLeft: "24px" }}>
+              <span style={{ color: "#c792ea" }}>final</span>{" "}
+              <span style={{ color: "#f07178" }}>name</span>{" "}
+              <span style={{ color: "#89ddff" }}>=</span>{" "}
+              <span style={{ color: "#c3e88d" }}>'Rosdeb Koch'</span>
+              <span style={{ color: "#89ddff" }}>;</span>
+            </div>
+            <div style={{ paddingLeft: "24px" }}>
+              <span style={{ color: "#c792ea" }}>final</span>{" "}
+              <span style={{ color: "#f07178" }}>skills</span>{" "}
+              <span style={{ color: "#89ddff" }}>=</span>{" "}
+              <span style={{ color: "#89ddff" }}>['</span>
+              <span style={{ color: "#c3e88d" }}>Flutter</span>
+              <span style={{ color: "#89ddff" }}>', '</span>
+              <span style={{ color: "#c3e88d" }}>Swift</span>
+              <span style={{ color: "#89ddff" }}>', '</span>
+              <span style={{ color: "#c3e88d" }}>Kotlin</span>
+              <span style={{ color: "#89ddff" }}>'];</span>
+            </div>
+            <div style={{ paddingLeft: "24px", marginTop: "4px" }}>
+              <span style={{ color: "#546e7a" }}>// Building beautiful mobile apps ✨</span>
+            </div>
+            <div style={{ paddingLeft: "24px" }}>
+              <span style={{ color: "#c792ea" }}>String</span>{" "}
+              <span style={{ color: "#82aaff" }}>build</span>() {"{"}
+            </div>
+            <div style={{ paddingLeft: "48px" }}>
+              <span style={{ color: "#c792ea" }}>return</span>{" "}
+              <span style={{ color: "#c3e88d" }}>'Amazing Apps'</span>
+              <span style={{ color: "#89ddff" }}>;</span>
+            </div>
+            <div style={{ paddingLeft: "24px" }}>{"}"}</div>
+            <div>{"}"}</div>
+
+            <div style={{ marginTop: "8px", display: "inline-flex", alignItems: "center" }}>
+              <span style={{ color: "#546e7a" }}>$ </span>
+              <span
+                className="terminal-cursor"
+                style={{
+                  display: "inline-block",
+                  width: "8px",
+                  height: "16px",
+                  backgroundColor: "#82aaff",
+                  marginLeft: "6px",
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Scroll indicator — also in normal flow now */}
         <div
           style={{
-            position: "absolute",
-            bottom: "40px",
-            left: "50%",
-            transform: "translateX(-50%)",
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
             gap: "8px",
+            marginTop: "48px",
             opacity: visible ? 1 : 0,
             transition: "opacity 0.6s ease 0.8s",
           }}
@@ -248,9 +347,18 @@ export default function Hero() {
           50% { transform: scale(1.18); opacity: 1; }
         }
 
+        @keyframes terminalCursorBlink {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0; }
+        }
+
+        .terminal-cursor {
+          animation: terminalCursorBlink 1s step-end infinite;
+        }
+
         .hero-portrait-stage {
           position: relative;
-          width: min(100%, 380px);
+          width: min(100%, 440px);
           display: flex;
           flex-direction: column;
           align-items: center;
@@ -260,8 +368,8 @@ export default function Hero() {
         .hero-portrait-glow {
           position: absolute;
           top: 44px;
-          width: 320px;
-          height: 320px;
+          width: 400px;
+          height: 400px;
           border-radius: 999px;
           background:
             radial-gradient(circle, rgba(128, 161, 186, 0.28) 0%, rgba(128, 161, 186, 0.08) 42%, rgba(128, 161, 186, 0) 72%),
@@ -271,34 +379,6 @@ export default function Hero() {
           animation: heroGlowPulse 6s ease-in-out infinite;
         }
 
-        .hero-status-pill {
-          position: relative;
-          z-index: 3;
-          display: inline-flex;
-          align-items: center;
-          gap: 10px;
-          margin-bottom: 18px;
-          padding: 10px 14px;
-          border: 1px solid rgba(128, 161, 186, 0.32);
-          border-radius: 999px;
-          background: rgba(36, 52, 61, 0.88);
-          backdrop-filter: blur(14px);
-          color: var(--foreground);
-          font-size: 12px;
-          font-weight: 500;
-          letter-spacing: 0.01em;
-          box-shadow: 0 12px 36px rgba(0, 0, 0, 0.28);
-        }
-
-        .hero-status-dot {
-          width: 8px;
-          height: 8px;
-          border-radius: 999px;
-          background: var(--accent-dim);
-          box-shadow: 0 0 0 6px rgba(145, 196, 195, 0.2);
-          animation: heroPulse 2.2s ease-in-out infinite;
-        }
-
         .hero-image-card {
           position: relative;
           z-index: 2;
@@ -306,12 +386,11 @@ export default function Hero() {
 
         .hero-image-ring {
           position: relative;
-          width: 334px;
-          height: 334px;
+          width: 420px;
+          height: 420px;
           padding: 10px;
           border-radius: 999px;
-          background:
-            linear-gradient(140deg, rgba(128, 161, 186, 0.95), rgba(145, 196, 195, 0.72), rgba(180, 222, 189, 0.78));
+          background: linear-gradient(140deg, rgba(128, 161, 186, 0.95), rgba(145, 196, 195, 0.72), rgba(180, 222, 189, 0.78));
           box-shadow: 0 30px 80px rgba(128, 161, 186, 0.22);
         }
 
@@ -322,9 +401,6 @@ export default function Hero() {
           overflow: hidden;
           border-radius: 999px;
           border: 6px solid rgba(30, 42, 49, 0.92);
-          background:
-            linear-gradient(180deg, rgba(255, 255, 255, 0.04) 0%, rgba(128, 161, 186, 0.08) 100%),
-            radial-gradient(circle at top, rgba(145, 196, 195, 0.2), transparent 48%);
         }
 
         .hero-image-panel img {
@@ -339,8 +415,7 @@ export default function Hero() {
         .hero-image-vignette {
           position: absolute;
           inset: 0;
-          background:
-            radial-gradient(circle at 50% 30%, rgba(10, 10, 10, 0) 22%, rgba(10, 10, 10, 0.12) 62%, rgba(10, 10, 10, 0.4) 100%);
+          background: radial-gradient(circle at 50% 30%, rgba(10, 10, 10, 0) 22%, rgba(10, 10, 10, 0.12) 62%, rgba(10, 10, 10, 0.4) 100%);
         }
 
         .hero-image-copy {
@@ -435,10 +510,6 @@ export default function Hero() {
         }
 
         @media (max-width: 768px) {
-          .hero-shell {
-            transform: translateY(-20px) !important;
-          }
-
           .hero-flex {
             flex-direction: column !important;
             align-items: flex-start !important;
@@ -472,15 +543,20 @@ export default function Hero() {
           .hero-stat-value {
             font-size: 21px;
           }
+          .hero-terminal {
+            margin-left: 0 !important;
+            margin-right: 0 !important;
+          }
+          .hero-terminal > div:last-child {
+            font-size: 11px !important;
+            padding: 16px !important;
+          }
         }
 
         @media (max-width: 520px) {
-          .hero-shell {
-            transform: translateY(-8px) !important;
-          }
-
           .hero-portrait-stage {
             width: min(100%, 300px);
+            animation-duration: 8s;
           }
           .hero-image-ring {
             width: 250px;
@@ -489,20 +565,20 @@ export default function Hero() {
           .hero-skill-chip {
             width: 100%;
           }
-          .hero-status-pill {
-            justify-content: center;
-            width: 100%;
-            font-size: 11px;
+          .hero-terminal {
+            border-radius: 8px !important;
           }
-          .hero-portrait-stage {
-            animation-duration: 8s;
+          .hero-terminal > div:last-child {
+            font-size: 10px !important;
+            padding: 12px !important;
+            line-height: 1.6 !important;
           }
         }
 
         @media (prefers-reduced-motion: reduce) {
           .hero-portrait-stage,
           .hero-portrait-glow,
-          .hero-status-dot {
+          .terminal-cursor {
             animation: none !important;
           }
         }
