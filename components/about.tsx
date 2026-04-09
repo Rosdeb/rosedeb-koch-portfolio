@@ -243,7 +243,7 @@ export default function About() {
                   label: "LinkedIn",
                   href: "https://www.linkedin.com/in/rosdev-koch-260005324/",
                 },
-                { label: "Email", href: "mailto:rosdebkoch@gmail.com" },
+                { label: "Email", href: "mailto:rosdevkoch@gmail.com" },
               ].map((link) => (
                 <a
                   key={link.label}

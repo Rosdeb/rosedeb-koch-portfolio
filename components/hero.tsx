@@ -125,6 +125,17 @@ export default function Hero() {
               <a href="#contact" className="btn-outline">
                 Get in Touch
               </a>
+              <a
+                href="/rosdeb-koch-cv.pdf"
+                download="rosdeb-koch-cv.pdf"
+                className="btn-outline"
+                style={{ display: "inline-flex", alignItems: "center", gap: "8px" }}
+              >
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="currentColor" strokeWidth="1.5">
+                  <path d="M7 1v9M4 7l3 3 3-3M2 12h10" />
+                </svg>
+                Download CV
+              </a>
             </div>
           </div>
 

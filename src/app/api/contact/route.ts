@@ -8,6 +8,9 @@ export async function GET() {
 export async function POST(req: Request) {
   try {
     const { name, email, message } = await req.json();
+    const emailUser = process.env.EMAIL_USER;
+    const emailPass = process.env.EMAIL_PASS?.replace(/\s+/g, "");
+    const contactRecipient = process.env.CONTACT_RECIPIENT || emailUser;
 
     // Validate inputs
     if (!name || !email || !message) {
@@ -17,23 +20,28 @@ export async function POST(req: Request) {
       );
     }
 
-    // ✅ CORRECT METHOD NAME
+    if (!emailUser || !emailPass || !contactRecipient) {
+      return NextResponse.json(
+        { error: "Email service is not configured" },
+        { status: 500 }
+      );
+    }
+
     const transporter = nodemailer.createTransport({
       host: process.env.SMTP_HOST || "smtp.gmail.com",
       port: Number(process.env.SMTP_PORT) || 587,
-      secure: false, // true for 465, false for 587
+      secure: Number(process.env.SMTP_PORT) === 465,
       auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
+        user: emailUser,
+        pass: emailPass,
       },
     });
 
-    // Optional but good for debugging
     await transporter.verify();
 
     await transporter.sendMail({
-      from: `"Portfolio Contact" <${process.env.EMAIL_USER}>`,
-      to: process.env.CONTACT_RECIPIENT || "rosdevkoch@gmail.com",
+      from: `"Portfolio Contact" <${emailUser}>`,
+      to: contactRecipient,
       subject: `New message from ${name}`,
       text: `From: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
       html: `

@@ -106,7 +106,7 @@ export default function Contact() {
             Reach out directly
           </p>
           <a
-            href="mailto:rosdebkoch@gmail.com"
+            href="mailto:rosdevkoch@gmail.com"
             style={{
               fontFamily: "var(--font-syne, Syne, sans-serif)",
               fontSize: "clamp(22px, 4vw, 40px)",
@@ -120,7 +120,7 @@ export default function Contact() {
             onMouseEnter={(e) => (e.currentTarget.style.color = "var(--accent)")}
             onMouseLeave={(e) => (e.currentTarget.style.color = "var(--foreground)")}
           >
-            rosdebkoch@gmail.com
+            rosdevkoch@gmail.com
           </a>
 
           {/* Social links */}
