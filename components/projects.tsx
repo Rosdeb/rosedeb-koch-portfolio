@@ -528,15 +528,24 @@ function ProjectRow({
             {project.year}
           </span>
           <span
+            aria-hidden
             style={{
-              fontSize: "16px",
-              transition: "transform 0.2s ease, color 0.2s ease",
-              transform: isActive ? "rotate(45deg)" : "rotate(0deg)",
-              color: isActive ? "var(--accent-warm)" : "var(--muted)",
+              width: "28px",
+              height: "28px",
+              display: "inline-flex",
+              alignItems: "center",
+              justifyContent: "center",
+              borderRadius: "999px",
+              border: "1px solid var(--border)",
+              backgroundColor: isActive ? "rgba(37, 99, 235, 0.1)" : "var(--surface)",
+              fontSize: "15px",
+              fontWeight: 700,
+              transition: "background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease",
+              color: isActive ? "var(--accent)" : "var(--muted)",
               lineHeight: 1,
             }}
           >
-            +
+            {isActive ? "↑" : "↓"}
           </span>
         </div>
       </div>
