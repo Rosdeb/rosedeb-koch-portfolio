@@ -72,19 +72,9 @@ export default function Hero() {
               transition: "opacity 0.6s ease, transform 0.6s ease",
             }}
           >
-            <p
-              style={{
-                fontSize: "12px",
-                fontWeight: 800,
-                letterSpacing: "0.15cm",
-                textTransform: "uppercase",
-                color: "var(--accent)",
-                marginBottom: "24px",
-                fontFamily: "var(--font-inter, Inter, sans-serif)",
-              }}
-            >
-              App Developer
-            </p>
+            <div className="hero-animated-title" aria-label="Mobile App Developer">
+              <span className="hero-animated-title-text">Mobile App Developer</span>
+            </div>
 
             <h1
               style={{
@@ -99,7 +89,7 @@ export default function Hero() {
               }}
             >
               ROSDEB KOCH
-                          </h1>
+            </h1>
 
             <p
               style={{
@@ -429,6 +419,81 @@ export default function Hero() {
           background: radial-gradient(circle at 50% 30%, rgba(10, 10, 10, 0) 22%, rgba(10, 10, 10, 0.12) 62%, rgba(10, 10, 10, 0.4) 100%);
         }
 
+        @keyframes heroTitleFloat {
+          0%, 100% {
+            transform: perspective(760px) rotateX(0deg) rotateY(-7deg) translateY(0);
+          }
+          50% {
+            transform: perspective(760px) rotateX(6deg) rotateY(6deg) translateY(-5px);
+          }
+        }
+
+        @keyframes heroTitleShine {
+          0% { background-position: 0% 50%; }
+          50% { background-position: 100% 50%; }
+          100% { background-position: 0% 50%; }
+        }
+
+        .hero-animated-title {
+          position: relative;
+          width: fit-content;
+          margin-bottom: 22px;
+          padding: 2px 2px 10px;
+          transform-style: preserve-3d;
+          animation: heroTitleFloat 5.2s ease-in-out infinite;
+        }
+
+        .hero-animated-title::before {
+          content: "";
+          position: absolute;
+          left: 2px;
+          right: -10px;
+          bottom: 0;
+          height: 1px;
+          background: linear-gradient(90deg, rgba(15,23,42,0.85), rgba(148,163,184,0.18), rgba(15,23,42,0));
+        }
+
+        .hero-animated-title::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          bottom: -6px;
+          width: 68%;
+          height: 14px;
+          border-radius: 999px;
+          background: radial-gradient(ellipse at center, rgba(15,23,42,0.16), rgba(15,23,42,0));
+          filter: blur(8px);
+          transform: translateZ(-16px) rotateX(70deg);
+        }
+
+        .hero-animated-title-text {
+          position: relative;
+          display: inline-block;
+          font-family: var(--font-syne, Syne, sans-serif);
+          font-size: clamp(14px, 2vw, 22px);
+          font-weight: 800;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          background: linear-gradient(110deg, #030712 0%, #111827 24%, #f8fafc 42%, #475569 48%, #030712 64%, #111827 100%);
+          background-size: 280% 100%;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+          -webkit-text-fill-color: transparent;
+          animation: heroTitleShine 4s ease-in-out infinite;
+          filter: drop-shadow(0 1px 0 rgba(255,255,255,0.95)) drop-shadow(0 12px 22px rgba(15,23,42,0.16));
+        }
+
+        .hero-animated-title-text::before {
+          content: "Mobile App Developer";
+          position: absolute;
+          inset: 0;
+          z-index: -1;
+          color: rgba(15,23,42,0.18);
+          -webkit-text-fill-color: rgba(15,23,42,0.18);
+          transform: translate3d(2px, 3px, -10px);
+          filter: blur(0.2px);
+        }
         .hero-image-copy {
           margin-top: 22px;
           text-align: center;
@@ -515,7 +580,7 @@ export default function Hero() {
         .hero-stat-label {
           margin-top: 4px;
           font-size: 11px;
-          letter-spacing: 0.08em;
+          letter-spacing: 0.06em;
           text-transform: uppercase;
           color: var(--muted);
         }
