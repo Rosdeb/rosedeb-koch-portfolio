@@ -119,24 +119,163 @@ const projects: Project[] = [
   {
     id: "4",
     index: "04",
-    name: "FinanceApp",
-    year: "2023",
-    tags: ["Flutter", "Firebase", "Charts"],
-    description: "Personal finance tracking and analytics with clean budgeting tools and visual breakdowns.",
-    playStoreLink: "#",
+    name: "Wuffoos",
+    year: "2026 12 May",
+    tags: ["Flutter", "android", "ios", "firebase", "google maps", "live tracking", "location sharing"],
+    description: `Wuffoos is an app that helps you find available pet sitters near you, or to register as a sitter and earn extra income doing what you love.
+If you're a pet owner, you can find dog or cat sitters to suit your needs. If you love animals and want to offer pet care services, Wuffoos allows you to do so flexibly.
+Services available on Wuffoos`,
+    websiteLink: "https://wuffoos.com/",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.wuffoos.app",
+    appStoreLink: "https://apps.apple.com/us/app/wuffoos/id6761444819",
+    screenshots: [
+      {
+        src: "/petcare_7.jpeg",
+        alt: "Wuffoos splash screen",
+      },
+      {
+        src: "/petcare_2.jpeg",
+        alt: "Wuffoos welcome screen",
+      },
+      {
+        src: "/petcare_1.jpeg",
+        alt: "Wuffoos sign in screen",
+      },
+      {
+        src: "/petcare_4.jpeg",
+        alt: "Wuffoos home screen",
+      },
+      {
+        src: "/petcare_5.jpeg",
+        alt: "Wuffoos location sharing screen",
+      },
+      {
+        src: "/petcare_8.jpeg",
+        alt: "Wuffoos profile screen",
+      },
+      {
+        src: "/petcare_6.jpeg",
+        alt: "Wuffoos live tracking map screen",
+      },
+    ],
   },
   {
     id: "5",
     index: "05",
-    name: "FitLife",
-    year: "2023",
-    tags: ["Kotlin", "ML Kit", "Jetpack Compose"],
-    description: "AI-powered fitness companion with rep counting, workout planning, and progress insights.",
-    playStoreLink: "#",
+    name: "Koukoutsa",
+    year: "July 2025",
+    tags: ["Flutter", "SMS-System", "Classification"],
+    description:
+      "Koukoutsa is a smart student attendance management app designed for schools, coaching centers, and training institutes. It makes tracking student presence, absence, and leave simple and efficient. When a student is not present, the app automatically sends a message or alert to their parent or another contact person registered in the app.",
+    playStoreLink: "https://play.google.com/store/apps/details?id=com.niki.koukoutsa",
+    screenshots: [
+      {
+        src: "/Onboarding.png",
+        alt: "Koukoutsa onboarding screen",
+      },
+      {
+        src: "/Sign Up.png",
+        alt: "Koukoutsa sign up screen",
+      },
+      {
+        src: "/Home.png",
+        alt: "Koukoutsa home screen",
+      },
+      {
+        src: "/All Classes.png",
+        alt: "Koukoutsa all classes screen",
+      },
+      {
+        src: "/Class Details.png",
+        alt: "Koukoutsa class details screen",
+      },
+      {
+        src: "/Class Details (1).png",
+        alt: "Koukoutsa class details screen",
+      },
+      {
+        src: "/My Profile.png",
+        alt: "Koukoutsa profile screen",
+      },
+    ],
   },
   {
     id: "6",
     index: "06",
+    name: "Koko App",
+    year: "2025",
+    tags: ["Android", "iOS", "IOT", "BLE", "Wi-Fi FTP", "Device Control"],
+    description:
+      "Koko App is an iOS device-control project for managing connected hardware from one place, including light control, volume adjustment, alarms, screen lock, sleep timers, Wi-Fi FTP file-system transfer, classic media playback, and BLE-based device communication.",
+    screenshots: [
+      {
+        src: "/koko_1.jpeg",
+        alt: "Koko App splash screen",
+      },
+      {
+        src: "/koko_login.jpeg",
+        alt: "Koko App login screen",
+      },
+      {
+        src: "/koko_dashboard.jpeg",
+        alt: "Koko App dashboard screen",
+      },
+      {
+        src: "/koko_settings.jpeg",
+        alt: "Koko App settings screen",
+      },
+      {
+        src: "/koko_light_controll.jpeg",
+        alt: "Koko App light control screen",
+      },
+      {
+        src: "/koko_story_generation.jpeg",
+        alt: "Koko App story generation screen",
+      },
+      {
+        src: "/koko_character.jpeg",
+        alt: "Koko App character screen",
+      },
+      {
+        src: "/koko_profile_update.jpeg",
+        alt: "Koko App profile update screen",
+      },
+      {
+        src: "/device_connect_screen.jpeg",
+        alt: "Koko App device screen",
+      },
+    ],
+  },
+  {
+    id: "7",
+    index: "07",
+    name: "Shopreal",
+    year: "2025",
+    tags: ["AI", "Product Validation", "E-commerce", "Dropshipping"],
+    description:
+      "Shopreal helps sellers validate products from an image or product link, checking whether an item looks trustworthy, has strong market potential, and is a good fit for dropshipping before they spend time or money promoting it.",
+    screenshots: [
+      {
+        src: "/home_screen.jpeg",
+        alt: "Shopreal home screen",
+      },
+      {
+        src: "/product_details.jpeg",
+        alt: "Shopreal product details screen",
+      },
+      {
+        src: "/card.jpeg",
+        alt: "Shopreal product validation card",
+      },
+      {
+        src: "/profile.jpeg",
+        alt: "Shopreal profile screen",
+      },
+    ],
+  },
+  {
+    id: "8",
+    index: "08",
     name: "SocialHub",
     year: "2022",
     tags: ["Flutter", "WebSocket", "Node.js"],
@@ -144,8 +283,8 @@ const projects: Project[] = [
     websiteLink: "#",
   },
   {
-    id: "7",
-    index: "07",
+    id: "9",
+    index: "09",
     name: "EduLearn",
     year: "2022",
     tags: ["Swift", "CloudKit", "iOS SDK"],
@@ -153,8 +292,8 @@ const projects: Project[] = [
     appStoreLink: "#",
   },
   {
-    id: "8",
-    index: "08",
+    id: "10",
+    index: "10",
     name: "DeliveryHub",
     year: "2022",
     tags: ["Kotlin", "Maps SDK", "Django"],
@@ -162,8 +301,8 @@ const projects: Project[] = [
     playStoreLink: "#",
   },
   {
-    id: "9",
-    index: "09",
+    id: "11",
+    index: "11",
     name: "TravelAR",
     year: "2021",
     tags: ["Flutter", "ARCore", "Maps API"],
@@ -171,8 +310,8 @@ const projects: Project[] = [
     playStoreLink: "#",
   },
   {
-    id: "10",
-    index: "10",
+    id: "12",
+    index: "12",
     name: "MusicStream",
     year: "2021",
     tags: ["React", "Web Audio API", "AWS"],
@@ -180,7 +319,6 @@ const projects: Project[] = [
     websiteLink: "#",
   },
 ]
-
 export default function Projects() {
   const [activeId, setActiveId] = useState<string | null>(null)
 
@@ -304,7 +442,7 @@ function ProjectRow({
         borderTop: "1px solid var(--border-muted)",
         cursor: "pointer",
         transition: "background-color 0.2s ease",
-        backgroundColor: hovered || isActive ? "rgba(100, 112, 192, 0.12)" : "transparent",
+        backgroundColor: hovered || isActive ? "rgba(37, 99, 235, 0.08)" : "transparent",
       }}
     >
       <div
@@ -362,7 +500,7 @@ function ProjectRow({
                   border: "1px solid var(--border)",
                   borderRadius: "999px",
                   padding: "4px 10px",
-                  backgroundColor: "rgba(36, 52, 61, 0.5)",
+                  backgroundColor: "var(--surface)",
                   fontFamily: "var(--font-inter, Inter, sans-serif)",
                 }}
               >
@@ -451,8 +589,8 @@ function ProjectRow({
                     flex: "0 0 180px",
                     borderRadius: "18px",
                     padding: "8px",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    background: "rgba(255,255,255,0.04)",
+                    border: "1px solid var(--border)",
+                    background: "var(--surface)",
                   }}
                 >
                   <Image

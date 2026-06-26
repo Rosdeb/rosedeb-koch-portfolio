@@ -6,22 +6,22 @@
 /* ─── Design Tokens ─────────────────────────────────────────── */
 :root {
   /* Palette */
-  --background: #002455;
-  --surface: #5B4B8A;
-  --surface-elevated: #7858A6;
-  --border: #7858A6;
-  --border-muted: #6A4D95;
+  --background: #ffffff;
+  --surface: #f8fafc;
+  --surface-elevated: #f1f5f9;
+  --border: #dbe3ea;
+  --border-muted: #edf2f7;
 
   /* Typography */
-  --foreground: #FFF7DD;
-  --muted: #D9D0EA;
-  --muted-light: #C6B8E2;
+  --foreground: #172033;
+  --muted: #64748b;
+  --muted-light: #475569;
 
   /* Accent system */
-  --accent: #7858A6;
-  --accent-dim: #5B4B8A;
-  --accent-soft: #B29AD8;
-  --accent-warm: #FFF7DD;
+  --accent: #2563eb;
+  --accent-dim: #1d4ed8;
+  --accent-soft: #93c5fd;
+  --accent-warm: #2563eb;
 
   /* Tailwind-compatible aliases */
   --color-background: var(--background);
@@ -94,7 +94,7 @@
   }
 
   ::selection {
-    background-color: var(--accent-dim);
+    background-color: var(--accent-soft);
     color: var(--foreground);
   }
 
@@ -245,7 +245,7 @@ html {
   gap: 8px;
   padding: 12px 28px;
   background-color: var(--accent);
-  color: var(--foreground);
+  color: #ffffff;
   font-family: var(--font-body);
   font-size: 14px;
   font-weight: 600;

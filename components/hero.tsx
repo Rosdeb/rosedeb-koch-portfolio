@@ -78,12 +78,12 @@ export default function Hero() {
                 fontWeight: 800,
                 letterSpacing: "0.15cm",
                 textTransform: "uppercase",
-                color: "#FFFFFF",
+                color: "var(--accent)",
                 marginBottom: "24px",
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
               }}
             >
-              Mobile Developer
+              App Developer
             </p>
 
             <h1
@@ -98,8 +98,8 @@ export default function Hero() {
                 wordBreak: "break-word",
               }}
             >
-              Rosdeb Koch
-            </h1>
+              ROSDEB KOCH
+                          </h1>
 
             <p
               style={{
@@ -212,9 +212,9 @@ export default function Hero() {
             margin: "16px auto 0",
             borderRadius: "12px",
             border: "1px solid rgba(128, 161, 186, 0.2)",
-            background: "rgba(20, 30, 36, 0.92)",
+            background: "#ffffff",
             backdropFilter: "blur(16px)",
-            boxShadow: "0 24px 64px rgba(0, 0, 0, 0.35), inset 0 1px 0 rgba(255, 255, 255, 0.04)",
+            boxShadow: "0 24px 64px rgba(15, 23, 42, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.8)",
             overflow: "hidden",
           }}
         >
@@ -225,7 +225,7 @@ export default function Hero() {
               gap: "8px",
               padding: "12px 16px",
               borderBottom: "1px solid rgba(128, 161, 186, 0.12)",
-              background: "rgba(30, 42, 49, 0.6)",
+              background: "var(--surface)",
             }}
           >
             <div style={{ width: "12px", height: "12px", borderRadius: "999px", background: "#ff5f57" }} />
@@ -461,7 +461,7 @@ export default function Hero() {
           padding: 12px 16px;
           border: 1px solid rgba(128, 161, 186, 0.24);
           border-radius: 999px;
-          background: rgba(36, 52, 61, 0.88);
+          background: rgba(255, 255, 255, 0.92);
           backdrop-filter: blur(14px);
           color: var(--foreground);
           font-size: 12px;
@@ -482,7 +482,7 @@ export default function Hero() {
           padding: 18px 22px;
           border: 1px solid rgba(128, 161, 186, 0.22);
           border-radius: 22px;
-          background: linear-gradient(180deg, rgba(36, 52, 61, 0.96) 0%, rgba(30, 42, 49, 0.96) 100%);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.96) 100%);
           display: grid;
           grid-template-columns: repeat(3, minmax(0, 1fr));
           gap: 16px;

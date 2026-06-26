@@ -130,8 +130,8 @@ export default function About() {
                   style={{
                     padding: "14px 16px",
                     borderRadius: "16px",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    backgroundColor: "rgba(255,255,255,0.03)",
+                    border: "1px solid var(--border)",
+                    backgroundColor: "var(--surface)",
                     color: "var(--muted-light)",
                     fontSize: "13px",
                     lineHeight: "1.6",
@@ -213,8 +213,8 @@ export default function About() {
                   style={{
                     padding: "12px 14px",
                     borderRadius: "14px",
-                    border: "1px solid rgba(255,255,255,0.08)",
-                    backgroundColor: "rgba(255,255,255,0.03)",
+                    border: "1px solid var(--border)",
+                    backgroundColor: "var(--surface)",
                     fontSize: "13px",
                     color: "var(--foreground)",
                     fontFamily: "var(--font-inter, Inter, sans-serif)",

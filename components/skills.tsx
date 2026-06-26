@@ -30,8 +30,7 @@ export default function Skills() {
       style={{
         padding: "120px 32px",
         borderTop: "1px solid var(--border)",
-        background:
-          "radial-gradient(circle at top, rgba(200, 212, 255, 0.16), transparent 28%), linear-gradient(180deg, #393D7E 0%, #343873 100%)",
+        backgroundColor: "var(--background)",
         overflow: "hidden",
       }}
     >
@@ -77,7 +76,7 @@ export default function Skills() {
               style={{
                 fontSize: "16px",
                 lineHeight: "1.8",
-                color: "rgba(232, 226, 245, 0.82)",
+                color: "var(--muted-light)",
                 marginBottom: "28px",
                 fontFamily: "var(--font-inter, Inter, sans-serif)",
               }}
@@ -115,13 +114,13 @@ export default function Skills() {
                   style={{
                     padding: "15px 18px",
                     borderRadius: "22px",
-                    border: "1px solid rgba(255,255,255,0.1)",
-                    background: "rgba(255,255,255,0.06)",
+                    border: "1px solid var(--border)",
+                    background: "var(--surface)",
                     backdropFilter: "blur(18px)",
-                    color: "rgba(241, 235, 250, 0.88)",
+                    color: "var(--muted-light)",
                     fontSize: "14px",
                     lineHeight: "1.65",
-                    boxShadow: "0 16px 38px rgba(10, 12, 44, 0.18)",
+                    boxShadow: "0 16px 38px rgba(15, 23, 42, 0.08)",
                     fontFamily: "var(--font-inter, Inter, sans-serif)",
                   }}
                 >
@@ -171,10 +170,8 @@ export default function Skills() {
           position: relative;
           min-height: 700px;
           border-radius: 42px;
-          background:
-            radial-gradient(circle at top, rgba(208, 216, 255, 0.12), transparent 26%),
-            linear-gradient(180deg, rgba(104, 112, 191, 0.28) 0%, rgba(69, 74, 142, 0.18) 100%);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.06), 0 30px 90px rgba(11, 13, 42, 0.16);
+          background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 30px 90px rgba(15, 23, 42, 0.08);
           overflow: hidden;
           perspective: 1400px;
         }
@@ -184,7 +181,7 @@ export default function Skills() {
           inset: auto 7% 38px;
           height: 120px;
           border-radius: 999px;
-          background: radial-gradient(circle, rgba(10, 12, 44, 0.12), rgba(10, 12, 44, 0.01) 70%, transparent 100%);
+          background: radial-gradient(circle, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.02) 70%, transparent 100%);
           filter: blur(18px);
           pointer-events: none;
         }
@@ -200,11 +197,11 @@ export default function Skills() {
         .cube-side {
           position: absolute;
           border-radius: 16px;
-          background: linear-gradient(180deg, rgba(230, 235, 255, 0.34) 0%, rgba(205, 214, 248, 0.22) 100%);
-          border: 1px solid rgba(255, 255, 255, 0.16);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.96) 0%, rgba(248, 250, 252, 0.96) 100%);
+          border: 1px solid var(--border);
           box-shadow:
             inset 0 1px 0 rgba(255,255,255,0.18),
-            0 16px 30px rgba(25, 30, 82, 0.12);
+            0 16px 30px rgba(15, 23, 42, 0.08);
           backdrop-filter: blur(18px);
         }
 
@@ -224,7 +221,7 @@ export default function Skills() {
           transform: rotateX(70deg);
           transform-origin: bottom center;
           opacity: 0.82;
-          background: linear-gradient(180deg, rgba(245, 247, 255, 0.38) 0%, rgba(217, 223, 248, 0.18) 100%);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.98) 100%);
         }
 
         .cube-side {
@@ -235,7 +232,7 @@ export default function Skills() {
           transform: rotateY(-68deg);
           transform-origin: left center;
           opacity: 0.72;
-          background: linear-gradient(180deg, rgba(240, 244, 255, 0.34) 0%, rgba(211, 218, 247, 0.18) 100%);
+          background: linear-gradient(180deg, rgba(248, 250, 252, 0.98) 0%, rgba(226, 232, 240, 0.98) 100%);
         }
 
         .cube-card-cross {
@@ -276,7 +273,7 @@ export default function Skills() {
           font-weight: 700;
           letter-spacing: 0.12em;
           text-transform: uppercase;
-          color: rgba(255, 247, 221, 0.96);
+          color: var(--foreground);
           font-family: var(--font-inter, Inter, sans-serif);
         }
 
@@ -338,8 +335,8 @@ function InfoPill({ label }: { label: string }) {
         minHeight: "40px",
         padding: "0 14px",
         borderRadius: "999px",
-        border: "1px solid rgba(255,255,255,0.12)",
-        background: "rgba(255,255,255,0.08)",
+        border: "1px solid var(--border)",
+        background: "var(--surface)",
         color: "var(--foreground)",
         fontSize: "12px",
         letterSpacing: "0.04em",
@@ -364,9 +361,9 @@ function SkillTag({ skill }: { skill: string }) {
         borderRadius: "999px",
         fontSize: "12px",
         fontWeight: 500,
-        color: "rgba(255, 247, 221, 0.96)",
-        border: "1px solid rgba(255, 255, 255, 0.12)",
-        background: "linear-gradient(180deg, rgba(198, 207, 244, 0.22) 0%, rgba(173, 184, 228, 0.16) 100%)",
+        color: "var(--foreground)",
+        border: "1px solid var(--border)",
+        background: "var(--surface-elevated)",
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.22)",
         fontFamily: "var(--font-inter, Inter, sans-serif)",
       }}

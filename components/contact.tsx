@@ -43,7 +43,7 @@ export default function Contact() {
   const inputStyle: React.CSSProperties = {
     width: "100%",
     padding: "12px 16px",
-    backgroundColor: "rgba(36, 52, 61, 0.76)",
+    backgroundColor: "#ffffff",
     border: "1px solid var(--border)",
     borderRadius: "4px",
     color: "var(--foreground)",
@@ -65,12 +65,12 @@ export default function Contact() {
     cursor: loading ? "not-allowed" : "pointer",
     opacity: 1,
     background: loading
-      ? "linear-gradient(180deg, rgba(166, 143, 214, 0.96) 0%, rgba(120, 88, 166, 0.96) 100%)"
-      : "linear-gradient(180deg, #9d84d6 0%, #7858A6 100%)",
-    borderColor: loading ? "rgba(255, 247, 221, 0.3)" : "rgba(255, 247, 221, 0.18)",
+      ? "linear-gradient(180deg, #60a5fa 0%, #2563eb 100%)"
+      : "linear-gradient(180deg, #3b82f6 0%, #2563eb 100%)",
+    borderColor: "rgba(37, 99, 235, 0.22)",
     boxShadow: loading
-      ? "0 10px 30px rgba(120, 88, 166, 0.38), inset 0 1px 0 rgba(255,255,255,0.22)"
-      : "0 12px 30px rgba(120, 88, 166, 0.32), inset 0 1px 0 rgba(255,255,255,0.18)",
+      ? "0 10px 30px rgba(37, 99, 235, 0.22), inset 0 1px 0 rgba(255,255,255,0.22)"
+      : "0 12px 30px rgba(37, 99, 235, 0.24), inset 0 1px 0 rgba(255,255,255,0.18)",
     transform: loading ? "scale(0.985)" : "scale(1)",
     transition:
       "background 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease",
