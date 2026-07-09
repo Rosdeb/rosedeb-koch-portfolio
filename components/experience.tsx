@@ -1,21 +1,21 @@
 export default function Experience() {
   const experiences = [
     {
-      year: "June - 2025 — Present",
+      year: "January - 2026 — Present",
       title: "Mobile App Developer",
       company: "SparkTech Agency",
       description:
         "Leading mobile development initiatives, mentoring junior developers, and architecting scalable applications.",
     },
     {
-      year: "June - 2025 — Present",
+      year: "August - 2025 - January 2026",
       title: "Junior Flutter Developer",
       company: "SparkTech Agency",
       description:
         "Developed and deployed multiple cross-platform applications, focusing on user experience and performance.",
     },
     {
-      year: "June - 2025 - October 2025",
+      year: "June - 2025 - August 2025",
       title: "Trainee Flutter Developer",
       company: "SparkTech Agency",
       description:

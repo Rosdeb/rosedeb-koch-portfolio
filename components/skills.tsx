@@ -1,27 +1,28 @@
+"use client"
+
+import { useState } from "react"
+
 const skillCategories = [
   {
     category: "Cross-Platform",
-    skills: ["Flutter", "Dart"],
-    className: "cube-card cube-card-cross",
+    skills: ["Flutter", "Dart", "GetX", "Riverpod", "Stripe", "RevenueCat", "In-App Purchases"],
   },
   {
-    category: "Android",
-    skills: ["Kotlin", "Java", "Android Studio", "XML"],
-    className: "cube-card cube-card-android",
+    category: "Android & iOS (Native)",
+    skills: ["Kotlin", "Java", "Swift", "SwiftUI", "Android Studio", "XML", "Mapkit"],
   },
   {
-    category: "iOS",
-    skills: ["Swift", "SwiftUI"],
-    className: "cube-card cube-card-ios",
+    category: "Backend & Cloud Integration",
+    skills: ["Firebase", "REST APIs", "JWT", "Socket.io", "WebRTC", "Mapbox", "Google Maps"],
   },
   {
-    category: "Tools & Platforms",
-    skills: ["Git", "Agora", "Google Maps", "Socket.io", "IoT", "Firebase", "REST APIs", "CI/CD"],
-    className: "cube-card cube-card-tools",
-  },
+    category: "Tools & DevOps",
+    skills: ["Git/GitHub", "CI/CD", "Agora", "IoT", "App Store Connect", "Google Play Console"],
+  }
 ]
 
 export default function Skills() {
+  const [hoveredCategory, setHoveredCategory] = useState<string | null>(null)
   const totalSkills = skillCategories.reduce((count, category) => count + category.skills.length, 0)
 
   return (
@@ -89,7 +90,7 @@ export default function Skills() {
                 display: "flex",
                 gap: "12px",
                 flexWrap: "wrap",
-                marginBottom: "28px",
+                marginBottom: "32px",
               }}
             >
               <InfoPill label={`${skillCategories.length} capability zones`} />
@@ -104,27 +105,32 @@ export default function Skills() {
               }}
             >
               {[
-                "Cross-platform apps with Flutter and Dart",
-                "Native Android delivery with Kotlin, Java, Android Studio, and XML",
-                "Modern iOS implementation with Swift and SwiftUI",
-                "Production tooling across Firebase, APIs, maps, real-time communication, and CI/CD",
+                { title: "Cross-platform apps with Flutter and Dart", category: "Cross-Platform" },
+                { title: "Native Android delivery with Kotlin, Java, Android Studio, and XML", category: "Android" },
+                { title: "Modern iOS implementation with Swift and SwiftUI", category: "iOS" },
+                { title: "Production tooling across Firebase, APIs, maps, real-time communication, and CI/CD", category: "Tools & Platforms" },
               ].map((item) => (
                 <div
-                  key={item}
+                  key={item.category}
+                  onMouseEnter={() => setHoveredCategory(item.category)}
+                  onMouseLeave={() => setHoveredCategory(null)}
                   style={{
                     padding: "15px 18px",
                     borderRadius: "22px",
-                    border: "1px solid var(--border)",
-                    background: "var(--surface)",
+                    border: hoveredCategory === item.category ? "1px solid var(--foreground)" : "1px solid var(--border)",
+                    background: hoveredCategory === item.category ? "var(--surface-elevated)" : "var(--surface)",
                     backdropFilter: "blur(18px)",
-                    color: "var(--muted-light)",
+                    color: hoveredCategory === item.category ? "var(--foreground)" : "var(--muted-light)",
                     fontSize: "14px",
                     lineHeight: "1.65",
-                    boxShadow: "0 16px 38px rgba(15, 23, 42, 0.08)",
+                    boxShadow: hoveredCategory === item.category ? "0 16px 38px rgba(15, 23, 42, 0.12)" : "0 16px 38px rgba(15, 23, 42, 0.04)",
                     fontFamily: "var(--font-inter, Inter, sans-serif)",
+                    transition: "all 0.3s ease",
+                    cursor: "pointer",
+                    transform: hoveredCategory === item.category ? "translateX(6px)" : "translateX(0)",
                   }}
                 >
-                  {item}
+                  {item.title}
                 </div>
               ))}
             </div>
@@ -132,21 +138,36 @@ export default function Skills() {
 
           <div className="skills-stage">
             <div className="cube-floor" aria-hidden />
-            {skillCategories.map((category) => (
-              <article key={category.category} className={category.className}>
-                <div className="cube-top" aria-hidden />
-                <div className="cube-side" aria-hidden />
-                <div className="cube-front">
-                  <p className="skills-card-title">{category.category}</p>
-                  <div className="skills-chip-wrap">
-                    {category.skills.map((skill) => (
-                      <SkillTag key={skill} skill={skill} />
-                    ))}
-                  </div>
-                </div>
-              </article>
-            ))}
+            {skillCategories.map((category, index) => {
+              const isHovered = hoveredCategory === category.category;
+              const isDimmed = hoveredCategory !== null && !isHovered;
 
+              return (
+                <article 
+                  key={category.category} 
+                  className={`cube-card ${isHovered ? 'cube-hovered' : ''}`}
+                  style={{ 
+                    animationDelay: `${index * 0.4}s`,
+                    opacity: isDimmed ? 0.4 : 1,
+                    transition: 'opacity 0.4s ease',
+                    zIndex: isHovered ? 10 : 1,
+                  }}
+                  onMouseEnter={() => setHoveredCategory(category.category)}
+                  onMouseLeave={() => setHoveredCategory(null)}
+                >
+                  <div className="cube-top" aria-hidden />
+                  <div className="cube-side" aria-hidden />
+                  <div className="cube-front">
+                    <p className="skills-card-title">{category.category}</p>
+                    <div className="skills-chip-wrap">
+                      {category.skills.map((skill) => (
+                        <SkillTag key={skill} skill={skill} isHovered={isHovered} />
+                      ))}
+                    </div>
+                  </div>
+                </article>
+              );
+            })}
           </div>
         </div>
       </div>
@@ -157,28 +178,29 @@ export default function Skills() {
           50% { transform: translate3d(0, -10px, 0); }
         }
 
-        @keyframes skillPulse {
-          0%, 100% { opacity: 0.45; transform: scale(1); }
-          50% { opacity: 0.8; transform: scale(1.08); }
-        }
-
         .skills-layout {
           position: relative;
         }
 
         .skills-stage {
           position: relative;
-          min-height: 700px;
+          min-height: 520px;
           border-radius: 42px;
           background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
           box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 30px 90px rgba(15, 23, 42, 0.08);
-          overflow: hidden;
           perspective: 1400px;
+          
+          /* Updated Layout to 2x2 Grid */
+          display: grid;
+          grid-template-columns: repeat(2, 1fr);
+          gap: 48px 32px;
+          padding: 50px 40px;
+          align-content: center;
         }
 
         .cube-floor {
           position: absolute;
-          inset: auto 7% 38px;
+          inset: auto 7% 10%;
           height: 120px;
           border-radius: 999px;
           background: radial-gradient(circle, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.02) 70%, transparent 100%);
@@ -187,9 +209,12 @@ export default function Skills() {
         }
 
         .cube-card {
-          position: absolute;
+          position: relative;
           transform-style: preserve-3d;
           animation: skillFloat 7s ease-in-out infinite;
+          display: flex;
+          flex-direction: column;
+          cursor: pointer;
         }
 
         .cube-front,
@@ -203,10 +228,13 @@ export default function Skills() {
             inset 0 1px 0 rgba(255,255,255,0.18),
             0 16px 30px rgba(15, 23, 42, 0.08);
           backdrop-filter: blur(18px);
+          transition: all 0.3s ease;
         }
 
         .cube-front {
-          inset: 0;
+          position: relative;
+          flex: 1;
+          z-index: 2;
           padding: 20px 18px 18px;
           display: flex;
           flex-direction: column;
@@ -221,6 +249,7 @@ export default function Skills() {
           transform: rotateX(70deg);
           transform-origin: bottom center;
           opacity: 0.82;
+          z-index: 1;
           background: linear-gradient(180deg, rgba(255, 255, 255, 0.98) 0%, rgba(241, 245, 249, 0.98) 100%);
         }
 
@@ -232,39 +261,22 @@ export default function Skills() {
           transform: rotateY(-68deg);
           transform-origin: left center;
           opacity: 0.72;
+          z-index: 1;
           background: linear-gradient(180deg, rgba(248, 250, 252, 0.98) 0%, rgba(226, 232, 240, 0.98) 100%);
         }
 
-        .cube-card-cross {
-          top: 74px;
-          left: 28px;
-          width: 220px;
-          height: 158px;
-          animation-delay: 0.2s;
+        /* Hover states for cubes */
+        .cube-card.cube-hovered .cube-front,
+        .cube-card.cube-hovered .cube-top,
+        .cube-card.cube-hovered .cube-side {
+          border-color: var(--foreground);
+          background: linear-gradient(180deg, rgba(255, 255, 255, 1) 0%, rgba(248, 250, 252, 1) 100%);
         }
-
-        .cube-card-android {
-          top: 20px;
-          right: 34px;
-          width: 296px;
-          height: 184px;
-          animation-delay: 0.9s;
-        }
-
-        .cube-card-ios {
-          left: 52px;
-          bottom: 56px;
-          width: 210px;
-          height: 160px;
-          animation-delay: 1.4s;
-        }
-
-        .cube-card-tools {
-          right: 16px;
-          bottom: 22px;
-          width: 382px;
-          height: 220px;
-          animation-delay: 0.5s;
+        
+        .cube-card.cube-hovered .cube-front {
+          box-shadow:
+            inset 0 1px 0 rgba(255,255,255,0.4),
+            0 24px 48px rgba(15, 23, 42, 0.12);
         }
 
         .skills-card-title {
@@ -294,26 +306,14 @@ export default function Skills() {
             min-height: auto !important;
             padding: 26px !important;
             display: grid !important;
-            gap: 18px !important;
+            gap: 24px 18px !important;
             grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
           }
-
-          .cube-card {
-            position: relative !important;
-            top: auto !important;
-            right: auto !important;
-            bottom: auto !important;
-            left: auto !important;
-            width: 100% !important;
-            height: auto !important;
-            transform: none !important;
-          }
-
+          
           .cube-top,
           .cube-side {
             display: none !important;
           }
-
         }
 
         @media (max-width: 700px) {
@@ -332,24 +332,22 @@ function InfoPill({ label }: { label: string }) {
       style={{
         display: "inline-flex",
         alignItems: "center",
-        minHeight: "40px",
-        padding: "0 14px",
-        borderRadius: "999px",
-        border: "1px solid var(--border)",
-        background: "var(--surface)",
-        color: "var(--foreground)",
-        fontSize: "12px",
+        padding: "6px 0",
+        color: "var(--muted)",
+        fontSize: "13px",
+        fontWeight: 600,
         letterSpacing: "0.04em",
         textTransform: "uppercase",
         fontFamily: "var(--font-inter, Inter, sans-serif)",
       }}
     >
+      <span style={{ marginRight: '8px', color: 'var(--foreground)' }}>•</span>
       {label}
     </span>
   )
 }
 
-function SkillTag({ skill }: { skill: string }) {
+function SkillTag({ skill, isHovered }: { skill: string, isHovered?: boolean }) {
   return (
     <span
       style={{
@@ -362,10 +360,11 @@ function SkillTag({ skill }: { skill: string }) {
         fontSize: "12px",
         fontWeight: 500,
         color: "var(--foreground)",
-        border: "1px solid var(--border)",
-        background: "var(--surface-elevated)",
+        border: isHovered ? "1px solid var(--foreground)" : "1px solid var(--border)",
+        background: isHovered ? "var(--surface-elevated)" : "var(--surface-elevated)",
         boxShadow: "inset 0 1px 0 rgba(255,255,255,0.22)",
         fontFamily: "var(--font-inter, Inter, sans-serif)",
+        transition: "all 0.3s ease",
       }}
     >
       {skill}
