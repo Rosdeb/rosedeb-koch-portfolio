@@ -137,7 +137,6 @@ export default function Skills() {
           </div>
 
           <div className="skills-stage">
-            <div className="cube-floor" aria-hidden />
             {skillCategories.map((category, index) => {
               const isHovered = hoveredCategory === category.category;
               const isDimmed = hoveredCategory !== null && !isHovered;
@@ -187,7 +186,7 @@ export default function Skills() {
           min-height: 520px;
           border-radius: 42px;
           background: linear-gradient(180deg, #ffffff 0%, var(--surface) 100%);
-          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8), 0 30px 90px rgba(15, 23, 42, 0.08);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.8);
           perspective: 1400px;
           
           /* Updated Layout to 2x2 Grid */
@@ -196,16 +195,6 @@ export default function Skills() {
           gap: 48px 32px;
           padding: 50px 40px;
           align-content: center;
-        }
-
-        .cube-floor {
-          position: absolute;
-          inset: auto 7% 10%;
-          height: 120px;
-          border-radius: 999px;
-          background: radial-gradient(circle, rgba(37, 99, 235, 0.12), rgba(37, 99, 235, 0.02) 70%, transparent 100%);
-          filter: blur(18px);
-          pointer-events: none;
         }
 
         .cube-card {
