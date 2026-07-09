@@ -35,9 +35,9 @@ export default function Navigation({ scrolled, scrollingUp }: NavigationProps) {
         width: "100%",
         zIndex: 50,
         transition: "background-color 0.3s ease, border-color 0.3s ease",
-        backgroundColor: scrolled && !scrollingUp ? "rgba(255, 255, 255, 0.92)" : "transparent",
-        borderBottom: scrolled && !scrollingUp ? "1px solid var(--border)" : "1px solid transparent",
-        backdropFilter: scrolled && !scrollingUp ? "blur(14px)" : "none",
+        backgroundColor: scrolled ? "rgba(255, 255, 255, 0.92)" : "transparent",
+        borderBottom: scrolled ? "1px solid var(--border)" : "1px solid transparent",
+        backdropFilter: scrolled ? "blur(14px)" : "none",
       }}
     >
       <div

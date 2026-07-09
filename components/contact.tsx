@@ -202,28 +202,39 @@ export default function Contact() {
             Or use the form below — I usually respond within 48 hours.
           </p>
 
-          {submitted ? (
+          {submitted && (
             <div
               style={{
-                padding: "20px 24px",
-                border: "1px solid var(--accent)",
-                borderRadius: "4px",
-                backgroundColor: "rgba(145, 196, 195, 0.08)",
+                padding: "16px 20px",
+                border: "1px solid rgba(16, 185, 129, 0.5)",
+                borderRadius: "8px",
+                backgroundColor: "rgba(16, 185, 129, 0.1)",
                 animation: "fadeIn 0.3s ease",
+                marginBottom: "24px",
+                display: "flex",
+                alignItems: "center",
+                gap: "12px",
               }}
             >
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#10b981" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
               <p
                 style={{
-                  fontSize: "14px",
-                  color: "var(--accent)",
+                  fontSize: "15px",
+                  color: "#10b981",
+                  fontWeight: 600,
                   fontFamily: "var(--font-inter, Inter, sans-serif)",
+                  margin: 0,
                 }}
               >
-                Message sent. I'll be in touch soon.
+                Email sent successfully! I'll be in touch soon.
               </p>
             </div>
-          ) : (
-            <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
+          )}
+
+          <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: "16px" }}>
               <input
                 type="text"
                 name="name"
@@ -302,7 +313,6 @@ export default function Contact() {
                 )}
               </button>
             </form>
-          )}
         </div>
       </div>
     </section>
